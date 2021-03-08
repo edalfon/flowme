@@ -1,0 +1,9 @@
+bookdown::gitbook:
+  lib_dir: assets
+  split_by: section
+  config:
+    toolbar:
+      position: static
+bookdown::word_document2: 
+  reference_docx: _style.docx
+  fig_caption: yes
