@@ -106,6 +106,25 @@
 #&gt;     ├── _output.yml
 #&gt;     ├── _style.docx
 #&gt;     └── chapter1.Rmd</code></pre>
+<div id="workflow-notes" class="section level2">
+<h2 class="hasAnchor">
+<a href="#workflow-notes" class="anchor"></a>Workflow notes</h2>
+<ul>
+<li>
+<p>The big picture plan (<code>the_plan</code>) should be defined in <code>_drake.R</code> by binding together sub-plans. So no details on the processing here (unless it is a really simple project, in which case you probably do not need <code>drake</code> anyway, so, …, just don’t). Hence, the plan should look something like this, which makes it easy for a newcomer to quickly know what the project is all about.</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">the_plan</span> <span class="op">&lt;-</span> <span class="fu">drake</span><span class="fu">::</span><span class="fu">bind_plans</span><span class="op">(</span>
+
+  <span class="fu">plan_network_analysis</span><span class="op">(</span><span class="op">)</span>,
+  <span class="fu">plan_survey_analysis</span><span class="op">(</span><span class="op">)</span>,
+  <span class="fu">plan_financial_analysis</span><span class="op">(</span><span class="op">)</span>,
+  <span class="fu">plan_bookme</span><span class="op">(</span><span class="op">)</span> <span class="co"># Just render the report using bookdown</span>
+<span class="op">)</span></code></pre></div>
+</li>
+<li><p>Define sub-plans within functions that return a <code>drake::drake_plan</code>. Defining the plans within functions instead of directly as objects helps navigating the project. You look at the plan, put the cursor on the sub-plan you want to go to and hit F2.</p></li>
+<li><p>Include .Rmd in the <code>report</code> directory, using the targets in the plans by calling <code>drake::loadd</code> or <code>drake::readd</code></p></li>
+</ul>
+</div>
 </div>
   </div>
 
