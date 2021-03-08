@@ -5,30 +5,30 @@ lapply(list.files("./R", full.names = TRUE), source, encoding = "UTF-8")
 
 # Your R files should have one or more drake plans. Bind them into the_plan
 the_plan <- drake::bind_plans(
-  
+
   # Add your plans here. A couple of notes about this:
-  # 
+  #
   # - Note the use of drake::bind_plans() to create "the_plan".
-  #   This is to keep things modular and avoid defining a huge plan in a single 
+  #   This is to keep things modular and avoid defining a huge plan in a single
   #   file. So, unless it is a trivial project, we should not define the actual
-  #   plan here. Instead, let's break down the analysis in conceptually relevant 
-  #   modules (typically a section) and define the plan for each of them in a 
+  #   plan here. Instead, let's break down the analysis in conceptually relevant
+  #   modules (typically a section) and define the plan for each of them in a
   #   separate file.
-  #   
+  #
   # - Plans should be defined in .R files in the R folder. That way they are
-  #   loaded above and available here. This is also helpful because the plans 
+  #   loaded above and available here. This is also helpful because the plans
   #   will also be loaded by devtools::load_all().
-  #   
-  # - Note the plans are not defined directly into an object using 
+  #
+  # - Note the plans are not defined directly into an object using
   #   drake::drake_plan(). Instead, we should define the plans within functions
-  #   that return the plan. This is just a convenience  thing that helps 
-  #   navigation (cursor in the call to the function that defines the plan and 
-  #   hit F2 would take you to the definition If the plans are directly defined 
+  #   that return the plan. This is just a convenience  thing that helps
+  #   navigation (cursor in the call to the function that defines the plan and
+  #   hit F2 would take you to the definition If the plans are directly defined
   #   as objects that would not work. F2 would open a Viewer on plan data.frame).
   #   The downside of doing this, is either an additional indentation level in
   #   the plan, or somewhat heretical code formatting.
-  
-  bookme_plan()
+
+  plan_bookme()
 )
 
 # Here just follow dflow, by default changing only format to qs and history=F

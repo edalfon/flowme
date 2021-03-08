@@ -39,3 +39,30 @@ It works by creating the following file structure in your current project:
 xfun::in_dir(fs::path_package("flowme", "templates/drake/"), fs::dir_tree())
 ```
 
+## Workflow notes
+
+- The big picture plan (`the_plan`) should be defined in `_drake.R`
+  by binding together sub-plans. So no details on the processing here (unless
+  it is a really simple project, in which case you probably do not need `drake` 
+  anyway, so, ..., just don't). Hence, the plan should look something like this, 
+  which makes it easy for a newcomer to quickly know what the project is all 
+  about.
+  
+  ``` r
+  the_plan <- drake::bind_plans(
+  
+    plan_network_analysis(),
+    plan_survey_analysis(),
+    plan_financial_analysis(),
+    plan_bookme() # Just render the report using bookdown
+  )
+  ```
+  
+- Define sub-plans within functions that return a `drake::drake_plan`. 
+  Defining the plans within functions instead of directly as objects helps 
+  navigating the project. You look at the plan, put the cursor on the sub-plan 
+  you want to go to and hit F2.
+  
+- Include .Rmd in the `report` directory, using the targets in the plans by 
+  calling `drake::loadd` or `drake::readd`
+

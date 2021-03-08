@@ -18,10 +18,4 @@ here as well.
 remotes::install_github("edalfon/flowme")
 ```
 
-## Example
-
-This is a basic example which shows you how to solve a common problem:
-
-``` r
-flowme::drakeme()
-```
+## [More details](https://edalfon.github.io/flowme/articles/flowme.html)
