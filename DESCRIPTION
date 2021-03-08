@@ -23,7 +23,6 @@ Suggests:
     spelling,
     knitr,
     rmarkdown,
-    projthis,
     xfun
 Config/testthat/edition: 3
 VignetteBuilder: knitr

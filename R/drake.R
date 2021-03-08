@@ -53,7 +53,7 @@ drakeme <- function() {
 
   # description file ####
   usethis::use_description(check_name = FALSE)
-  if (requireNamespace("projthis", quietly = TRUE)) {
-    projthis::proj_update_deps()
-  }
+  # if (requireNamespace("projthis", quietly = TRUE)) {
+  #   projthis::proj_update_deps()
+  # }
 }
