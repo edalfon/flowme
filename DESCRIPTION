@@ -1,5 +1,5 @@
 Package: flowme
-Title: What the Package Does (One Line, Title Case)
+Title: Add boilerplate code to your project for some specific workflows
 Version: 0.0.0.9000
 Authors@R: 
     person(given = "Eduardo",
@@ -7,7 +7,8 @@ Authors@R:
            role = c("aut", "cre", "cph"),
            email = "edalfon@gmail.com",
            comment = c(ORCID = "0000-0001-6430-5135"))
-Description: What the package does (one paragraph).
+Description: One function call to include in your current project tailored
+  files and directories to support some specific workflows.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Language: en-US
@@ -26,5 +27,5 @@ Suggests:
     xfun
 Config/testthat/edition: 3
 VignetteBuilder: knitr
-URL: https://github.com/edalfon/flowme
+URL: https://edalfon.github.io/flowme/, https://github.com/edalfon/flowme
 BugReports: https://github.com/edalfon/flowme/issues

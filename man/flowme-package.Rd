@@ -4,9 +4,19 @@
 \name{flowme-package}
 \alias{flowme}
 \alias{flowme-package}
-\title{flowme: What the Package Does (One Line, Title Case)}
+\title{flowme: Add boilerplate code to your project for some specific workflows}
 \description{
-What the package does (one paragraph).
+One function call to include in your current project tailored
+  files and directories to support some specific workflows.
+}
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://edalfon.github.io/flowme/}
+  \item \url{https://github.com/edalfon/flowme}
+  \item Report bugs at \url{https://github.com/edalfon/flowme/issues}
+}
+
 }
 \author{
 \strong{Maintainer}: Eduardo Alfonso-Sierra \email{edalfon@gmail.com} (\href{https://orcid.org/0000-0001-6430-5135}{ORCID}) [copyright holder]
