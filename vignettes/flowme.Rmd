@@ -21,14 +21,15 @@ knitr::opts_chunk$set(
 flowme::drakeme()
 ```
 
-`flowme::drakeme()` includes our boilerplate for `drake`-powered projects in 
-your current session. It is based on McBain's [`dflow`](https://github.com/MilesMcBain/dflow)
-and it is tailored to our report-generating projects.
+`flowme::drakeme()` includes our boilerplate for `drake`-powered projects in
+your current session. It is based on McBain's
+[`dflow`](https://github.com/MilesMcBain/dflow) and it is tailored to our
+report-generating projects.
 
 Basically it includes a couple of convenience features as follows:
 
-- Sets the stage for the project to produce a report with `bookdown`. 
-  Simply add .Rmd files to the "report" folder and you are good to go.
+- Sets the stage for the project to produce a report with `bookdown`, so you 
+  simply add .Rmd files to the "report" folder and you are good to go.
 - Proposes a one-plan-per-chapter approach (defining the plans within functions 
   to help code navigation).
 - A couple of wrappers for `drake` functions to better fit our needs.

@@ -31,12 +31,10 @@ bookme <- function(input_dir, input_files = "*", output_dir = NULL,
     bookdown::render_book(
       input = input_files,
       output_format = output_format,
-      clean_envir = FALSE, # otherwise will not find output_dir, ..., weird
-      output_dir = output_dir,
-      config_file = "_bookdown.yml" # to set delete_merged_file: true
+      output_dir = output_dir
   )})
 
-  base::shell(target_file, wait = FALSE)
+  tryCatch(base::shell(target_file, wait = FALSE))
 
   target_file
 }
