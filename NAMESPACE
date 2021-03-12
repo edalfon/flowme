@@ -2,4 +2,5 @@
 
 export("%>%")
 export(drakeme)
+export(ignore_drake)
 importFrom(magrittr,"%>%")

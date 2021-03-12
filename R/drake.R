@@ -33,7 +33,7 @@ drakeme <- function() {
   )
 
   # report files ####
-  fs::dir_create("report")
+  usethis::use_directory("report", ignore = TRUE)
   usethis::use_template(
     template = "drake/report/_bookdown.yml", save_as = "report/_bookdown.yml",
     ignore = TRUE, open = FALSE, package = "flowme"
@@ -42,10 +42,14 @@ drakeme <- function() {
     template = "drake/report/_output.yml", save_as = "report/_output.yml",
     ignore = TRUE, open = FALSE, package = "flowme"
   )
-  usethis::use_template(
-    template = "drake/report/_style.docx", save_as = "report/_style.docx",
-    ignore = TRUE, open = FALSE, package = "flowme"
+
+  # Done differently because usethis::use_template does not handle well weird
+  # characters in .docx files (presumably, trying to put data in the template)
+  file.copy(
+    from = fs::path_package("flowme", "templates/drake/report/_style.docx"),
+    to = "report/_style.docx"
   )
+
   usethis::use_template(
     template = "drake/report/chapter1.Rmd", save_as = "report/chapter1.Rmd",
     ignore = TRUE, open = TRUE, package = "flowme"
@@ -56,4 +60,18 @@ drakeme <- function() {
   # if (requireNamespace("projthis", quietly = TRUE)) {
   #   projthis::proj_update_deps()
   # }
+}
+
+#' Add entries to .gitignore, to ignore non-version-control-friendly files
+#' in this drake-based workflow
+#'
+#' @export
+#' @md
+ignore_drake <- function() {
+
+  usethis::use_git_ignore(".drake")
+  usethis::use_git_ignore(".drake_history")
+  usethis::use_git_ignore("report/*.html")
+  usethis::use_git_ignore("report/report-output/")
+  usethis::use_git_ignore("report/_bookdown_files/")
 }
