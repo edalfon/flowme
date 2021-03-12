@@ -34,7 +34,7 @@ bookme <- function(input_dir, input_files = "*", output_dir = NULL,
       output_dir = output_dir
   )})
 
-  tryCatch(base::shell(target_file, wait = FALSE))
+  try(base::shell(target_file, wait = FALSE), silent = TRUE)
 
   target_file
 }

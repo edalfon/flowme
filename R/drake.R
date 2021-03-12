@@ -57,6 +57,10 @@ drakeme <- function() {
 
   # description file ####
   usethis::use_description(check_name = FALSE)
+  usethis::use_package("drake")
+  usethis::use_package("callr")
+  usethis::use_package("visNetwork")
+  usethis::use_package("bookdown")
   # if (requireNamespace("projthis", quietly = TRUE)) {
   #   projthis::proj_update_deps()
   # }
