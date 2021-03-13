@@ -5,7 +5,7 @@
 #'
 #' @export
 #' @md
-drakeme <- function() {
+drakeme <- function(install_deps = TRUE) {
 
   # drake file ####
   usethis::use_template(
@@ -65,6 +65,10 @@ drakeme <- function() {
   desc::desc_set_dep("callr")
   desc::desc_set_dep("visNetwork")
   desc::desc_set_dep("bookdown")
+
+  if (isTRUE(install_deps)) {
+    remotes::install_deps(upgrade = "never")
+  }
 }
 
 #' Add entries to .gitignore, to ignore non-version-control-friendly files

@@ -19,7 +19,8 @@ Imports:
     magrittr,
     usethis,
     fs,
-    desc
+    desc,
+    remotes
 Suggests: 
     testthat (>= 3.0.0),
     spelling,
