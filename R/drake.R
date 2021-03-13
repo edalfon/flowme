@@ -31,6 +31,10 @@ drakeme <- function() {
     template = "drake/R/plan_bookme.R", save_as = "R/plan_bookme.R",
     ignore = FALSE, open = FALSE, package = "flowme"
   )
+  usethis::use_template(
+    template = "drake/R/plan_sessioninfo.R", save_as = "R/plan_sessioninfo.R",
+    ignore = FALSE, open = FALSE, package = "flowme"
+  )
 
   # report files ####
   usethis::use_directory("report", ignore = TRUE)

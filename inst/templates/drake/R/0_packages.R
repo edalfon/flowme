@@ -1,19 +1,15 @@
-if(!requireNamespace("pacman", quietly = TRUE)) {
-  install.packages("pacman")
-}
-
 # Load required packages with pacman::p_load() to install them when missing
 # TODO: Consider using xfun::pkg_attach(..., install = TRUE)
 #       I don't like that it uses character vectors, though.
+if(!requireNamespace("pacman", quietly = TRUE)) {
+  install.packages("pacman")
+}
 pacman::p_load(
   magrittr,
   dplyr,
   tidyr,
   ggplot2,
   patchwork,
-
-  rmarkdown,
-  bookdown,
 
   assertr,
 
@@ -37,7 +33,9 @@ conflicted::conflict_prefer("expand", "tidyr", quiet = TRUE)
 
 # Meanwhile, let's use xfun::pkg_load
 deps_pkgs <- c(
-  "waldo", "qs"
+  "waldo",
+  "qs",
+  "bookdown"
 )
 xfun::pkg_load(deps_pkgs, install = TRUE)
 
@@ -50,3 +48,4 @@ xfun::pkg_load(deps_pkgs, install = TRUE)
 
 # Check all packages used in this code
 # renv::dependencies()$Package %>% unique()
+

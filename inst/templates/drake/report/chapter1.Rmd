@@ -22,4 +22,9 @@ knitr::opts_chunk$set(
 
 # Chapter 1
 
+<details><summary>Session Info</summary>
+```{r}
+drake::readd(sessioninfo)
+```
+</details>
 
