@@ -35,6 +35,7 @@ conflicted::conflict_prefer("expand", "tidyr", quiet = TRUE)
 deps_pkgs <- c(
   "waldo",
   "qs",
+  "sessioninfo",
   "bookdown"
 )
 xfun::pkg_load(deps_pkgs, install = TRUE)

@@ -64,6 +64,7 @@ drakeme <- function(install_deps = TRUE) {
   desc::desc_set_dep("drake")
   desc::desc_set_dep("callr")
   desc::desc_set_dep("visNetwork")
+  desc::desc_set_dep("lubridate")
   desc::desc_set_dep("bookdown")
 
   if (isTRUE(install_deps)) {
