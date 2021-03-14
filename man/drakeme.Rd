@@ -2,10 +2,20 @@
 % Please edit documentation in R/drake.R
 \name{drakeme}
 \alias{drakeme}
-\title{Use drake boilerplate}
+\title{Add files and directories for a drake-powered project.}
 \usage{
-drakeme()
+drakeme(install_deps = TRUE)
+}
+\arguments{
+\item{install_deps}{logical, whether to install drake and other dependencies}
 }
 \description{
-Create files and directories for a drake-powered project
+Add boilerplate code to the current project for a drake-based project
+\itemize{
+\item Copy drake templates to the current project.
+\item Create a description file (usethis::use_description), including key
+dependencies to run a drake workflow, installing them by default
+(opt-out using install_deps = FALSE).
+\item Include entries in .gitignore to prevent some files into version control
+}
 }

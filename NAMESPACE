@@ -2,5 +2,7 @@
 
 export("%>%")
 export(drakeme)
-export(ignore_drake)
+export(use_drake_description)
+export(use_drake_gitignore)
+export(use_drake_templates)
 importFrom(magrittr,"%>%")

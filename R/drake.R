@@ -1,11 +1,55 @@
 
-#' Use drake boilerplate
+#' Add files and directories for a drake-powered project.
 #'
-#' Create files and directories for a drake-powered project
+#' Add boilerplate code to the current project for a drake-based project
+#' - Copy drake templates to the current project.
+#' - Create a description file (usethis::use_description), including key
+#'   dependencies to run a drake workflow, installing them by default
+#'   (opt-out using install_deps = FALSE).
+#' - Include entries in .gitignore to prevent some files into version control
+#'
+#' @inheritParams use_drake_description
 #'
 #' @export
 #' @md
 drakeme <- function(install_deps = TRUE) {
+
+  use_drake_templates()
+  use_drake_description(install_deps)
+  use_drake_gitignore()
+}
+
+#' Create a description file, including key dependencies to run a drake workflow
+#'
+#' TODO: restart rstudio, if available? should we?
+#'
+#' @param install_deps logical, whether to install drake and other dependencies
+#'
+#' @export
+#' @md
+use_drake_description <- function(install_deps = TRUE) {
+
+  usethis::use_description(check_name = FALSE)
+  desc::desc_set_dep("drake")
+  desc::desc_set_dep("callr")
+  desc::desc_set_dep("visNetwork")
+  desc::desc_set_dep("lubridate")
+  desc::desc_set_dep("bookdown")
+
+  if (isTRUE(install_deps)) {
+    remotes::install_deps(upgrade = "never")
+  }
+}
+
+#' Copy drake templates to the current project
+#'
+#' Leverage usethis::use_template to use flowme's drake templates
+#' TODO: let the user customize the "report" folder
+#' TODO: more convenient overwrite?
+#'
+#' @export
+#' @md
+use_drake_templates <- function() {
 
   # drake file ####
   usethis::use_template(
@@ -58,18 +102,6 @@ drakeme <- function(install_deps = TRUE) {
     template = "drake/report/chapter1.Rmd", save_as = "report/chapter1.Rmd",
     ignore = TRUE, open = TRUE, package = "flowme"
   )
-
-  # description file ####
-  usethis::use_description(check_name = FALSE)
-  desc::desc_set_dep("drake")
-  desc::desc_set_dep("callr")
-  desc::desc_set_dep("visNetwork")
-  desc::desc_set_dep("lubridate")
-  desc::desc_set_dep("bookdown")
-
-  if (isTRUE(install_deps)) {
-    remotes::install_deps(upgrade = "never")
-  }
 }
 
 #' Add entries to .gitignore, to ignore non-version-control-friendly files
@@ -77,7 +109,7 @@ drakeme <- function(install_deps = TRUE) {
 #'
 #' @export
 #' @md
-ignore_drake <- function() {
+use_drake_gitignore <- function() {
 
   usethis::use_git_ignore(".drake")
   usethis::use_git_ignore(".drake_history")
