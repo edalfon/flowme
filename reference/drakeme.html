@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Use drake boilerplate — drakeme • flowme</title>
+<title>Add files and directories for a drake-powered project. — drakeme • flowme</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,15 @@
 
 
 
-<meta property="og:title" content="Use drake boilerplate — drakeme" />
-<meta property="og:description" content="Create files and directories for a drake-powered project" />
+<meta property="og:title" content="Add files and directories for a drake-powered project. — drakeme" />
+<meta property="og:description" content="Add boilerplate code to the current project for a drake-based project
+Copy drake templates to the current project.
+Create a description file (usethis::use_description), including key
+dependencies to run a drake workflow, installing them by default
+(opt-out using install_deps = FALSE).
+Include entries in .gitignore to prevent some files into version control
+
+" />
 
 
 
@@ -111,17 +118,32 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Use drake boilerplate</h1>
+    <h1>Add files and directories for a drake-powered project.</h1>
     <small class="dont-index">Source: <a href='https://github.com/edalfon/flowme/blob/master/R/drake.R'><code>R/drake.R</code></a></small>
     <div class="hidden name"><code>drakeme.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Create files and directories for a drake-powered project</p>
+    <p>Add boilerplate code to the current project for a drake-based project</p><ul>
+<li><p>Copy drake templates to the current project.</p></li>
+<li><p>Create a description file (usethis::use_description), including key
+dependencies to run a drake workflow, installing them by default
+(opt-out using install_deps = FALSE).</p></li>
+<li><p>Include entries in .gitignore to prevent some files into version control</p></li>
+</ul>
+
     </div>
 
-    <pre class="usage"><span class='fu'>drakeme</span><span class='op'>(</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>drakeme</span><span class='op'>(</span>install_deps <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></pre>
 
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>install_deps</th>
+      <td><p>logical, whether to install drake and other dependencies</p></td>
+    </tr>
+    </table>
 
 
   </div>

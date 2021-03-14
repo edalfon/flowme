@@ -3,7 +3,7 @@ pkgdown: 1.6.1
 pkgdown_sha: ~
 articles:
   flowme: flowme.html
-last_built: 2021-03-13T15:58Z
+last_built: 2021-03-14T07:44Z
 urls:
   reference: https://edalfon.github.io/flowme//reference
   article: https://edalfon.github.io/flowme//articles

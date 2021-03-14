@@ -10,10 +10,16 @@
     <loc>https://edalfon.github.io/flowme//reference/flowme-package.html</loc>
   </url>
   <url>
-    <loc>https://edalfon.github.io/flowme//reference/ignore_drake.html</loc>
+    <loc>https://edalfon.github.io/flowme//reference/pipe.html</loc>
   </url>
   <url>
-    <loc>https://edalfon.github.io/flowme//reference/pipe.html</loc>
+    <loc>https://edalfon.github.io/flowme//reference/use_drake_description.html</loc>
+  </url>
+  <url>
+    <loc>https://edalfon.github.io/flowme//reference/use_drake_gitignore.html</loc>
+  </url>
+  <url>
+    <loc>https://edalfon.github.io/flowme//reference/use_drake_templates.html</loc>
   </url>
   <url>
     <loc>https://edalfon.github.io/flowme//articles/flowme.html</loc>
