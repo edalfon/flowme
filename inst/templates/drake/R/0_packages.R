@@ -24,6 +24,7 @@ deps_pkgs <- c(
   "qs",
   "sessioninfo",
   "tictoc",
+  "fs",
   "bookdown"
 )
 xfun::pkg_load(deps_pkgs, install = TRUE)
