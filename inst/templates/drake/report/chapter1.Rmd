@@ -20,7 +20,7 @@ knitr::opts_chunk$set(
 ```
 
 
-# Chapter 1
+# Chapter 1: a.k.a Hello World !
 
 <details><summary>Session Info</summary>
 ```{r}
