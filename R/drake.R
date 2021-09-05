@@ -19,6 +19,10 @@ drakeme <- function(install_deps = TRUE) {
   use_drake_gitignore()
 }
 
+#' @rdname drakeme
+#' @export
+use_drake <- drakeme
+
 #' Create a description file, including key dependencies to run a drake workflow
 #'
 #' TODO: restart rstudio, if available? should we?

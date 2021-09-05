@@ -2,9 +2,12 @@
 % Please edit documentation in R/drake.R
 \name{drakeme}
 \alias{drakeme}
+\alias{use_drake}
 \title{Add files and directories for a drake-powered project.}
 \usage{
 drakeme(install_deps = TRUE)
+
+use_drake(install_deps = TRUE)
 }
 \arguments{
 \item{install_deps}{logical, whether to install drake and other dependencies}
