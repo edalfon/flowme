@@ -2,7 +2,7 @@ plan_bookme <- function() { drake::drake_plan(
 
   # Bookdown #######
   # Bookdown all .Rmd reports into a single book using the M-K default approach
-  final_report = bookme(
+  final_report = flowme::bookme(
     input_dir = "report",
     input_files = knitr_in(!!fs::path_real(fs::dir_ls("report", glob = "*.Rmd"))),
     output_dir = "report-output",

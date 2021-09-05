@@ -3,6 +3,8 @@
 #'
 #' bookdown::render_book renders "multiple R Markdown files
 #' under the current working directory into a book".
+#' TODO: it seems this restriction will be lifted in the next bookdown release
+#'       so let's see when it is out and adjust here as necessary
 #' That is, IMHO, unfortunate. In particular, when the book
 #' is not the root of your project, you would have to mess with
 #' setwd() or the like and {here} won't help you either.

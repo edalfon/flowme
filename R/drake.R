@@ -64,10 +64,6 @@ use_drake_templates <- function() {
     ignore = FALSE, open = TRUE, package = "flowme"
   )
   usethis::use_template(
-    template = "drake/R/bookme.R", save_as = "R/bookme.R",
-    ignore = FALSE, open = FALSE, package = "flowme"
-  )
-  usethis::use_template(
     template = "drake/R/drakeme.R", save_as = "R/drakeme.R",
     ignore = FALSE, open = FALSE, package = "flowme"
   )
