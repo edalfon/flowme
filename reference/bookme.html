@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Page not found (404) • flowme</title>
+<title>Wrapper of bookdown::render_book, running it in input_dir — bookme • flowme</title>
 
 
 <!-- jquery -->
@@ -18,8 +18,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
 
 <!-- bootstrap-toc -->
-<link rel="stylesheet" href="https://edalfon.github.io/flowme//bootstrap-toc.css">
-<script src="https://edalfon.github.io/flowme//bootstrap-toc.js"></script>
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
@@ -33,13 +33,23 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
-<link href="https://edalfon.github.io/flowme//pkgdown.css" rel="stylesheet">
-<script src="https://edalfon.github.io/flowme//pkgdown.js"></script>
+<link href="../pkgdown.css" rel="stylesheet">
+<script src="../pkgdown.js"></script>
 
 
 
 
-<meta property="og:title" content="Page not found (404)" />
+<meta property="og:title" content="Wrapper of bookdown::render_book, running it in input_dir — bookme" />
+<meta property="og:description" content="bookdown::render_book renders &quot;multiple R Markdown files
+under the current working directory into a book&quot;.
+TODO: it seems this restriction will be lifted in the next bookdown release
+so let's see when it is out and adjust here as necessary
+That is, IMHO, unfortunate. In particular, when the book
+is not the root of your project, you would have to mess with
+setwd() or the like and here won't help you either.
+This function works around this issue by leveraging xfun::in_dir
+to run bookdown::render_book in the input_dir of your choice.
+Then I do not have to deal myself with setwd() and changing it back." />
 
 
 
@@ -68,7 +78,7 @@
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-title-body">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -80,7 +90,7 @@
         <span class="icon-bar"></span>
       </button>
       <span class="navbar-brand">
-        <a class="navbar-link" href="https://edalfon.github.io/flowme//index.html">flowme</a>
+        <a class="navbar-link" href="../index.html">flowme</a>
         <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9000</span>
       </span>
     </div>
@@ -88,16 +98,16 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="index.html">
+  <a href="../index.html">
     <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
 <li>
-  <a href="articles/flowme.html">Get started</a>
+  <a href="../articles/flowme.html">Get started</a>
 </li>
 <li>
-  <a href="reference/index.html">Reference</a>
+  <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -107,7 +117,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="articles/drakeme.html">drakeme</a>
+      <a href="../articles/drakeme.html">drakeme</a>
     </li>
   </ul>
 </li>
@@ -130,23 +140,68 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Page not found (404)</h1>
+    <h1>Wrapper of bookdown::render_book, running it in input_dir</h1>
+    <small class="dont-index">Source: <a href='https://github.com/edalfon/flowme/blob/master/R/bookme.R'><code>R/bookme.R</code></a></small>
+    <div class="hidden name"><code>bookme.Rd</code></div>
     </div>
 
-Content not found. Please use links in the navbar.
+    <div class="ref-description">
+    <p>bookdown::render_book renders "multiple R Markdown files
+under the current working directory into a book".
+TODO: it seems this restriction will be lifted in the next bookdown release
+so let's see when it is out and adjust here as necessary
+That is, IMHO, unfortunate. In particular, when the book
+is not the root of your project, you would have to mess with
+setwd() or the like and here won't help you either.
+This function works around this issue by leveraging xfun::in_dir
+to run bookdown::render_book in the input_dir of your choice.
+Then I do not have to deal myself with setwd() and changing it back.</p>
+    </div>
 
+    <pre class="usage"><span class='fu'>bookme</span><span class='op'>(</span><span class='va'>input_dir</span>, input_files <span class='op'>=</span> <span class='st'>"*"</span>, output_dir <span class='op'>=</span> <span class='cn'>NULL</span>, output_format <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
+
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>input_dir</th>
+      <td><p>the main directory of the book</p></td>
+    </tr>
+    <tr>
+      <th>input_files</th>
+      <td><p>character vector with input files, in case you do not
+want to render them all (the default)</p></td>
+    </tr>
+    <tr>
+      <th>output_dir</th>
+      <td><p>character vector where to  put the rendered book</p></td>
+    </tr>
+    <tr>
+      <th>output_format</th>
+      <td><p>https://bookdown.org/yihui/bookdown/output-formats.html</p></td>
+    </tr>
+    </table>
+
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>character vector with the path to the output</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>In addition, the function calls base::shell to open the book in the
+default viewer for the output</p>
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'>bookme</span><span class='op'>(</span><span class='st'>"report"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='error'>Error in setwd(dir): cannot change working directory</span></div></pre>
   </div>
-
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
       <h2 data-toc-skip>Contents</h2>
     </nav>
   </div>
-
 </div>
-
 
 
       <footer>
