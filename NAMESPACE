@@ -3,6 +3,7 @@
 export("%>%")
 export(bookme)
 export(drakeme)
+export(tar_bookdown)
 export(use_drake)
 export(use_drake_description)
 export(use_drake_gitignore)

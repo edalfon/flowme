@@ -2,7 +2,7 @@
 % Please edit documentation in R/bookme.R
 \name{bookme}
 \alias{bookme}
-\title{Wrapper of bookdown::render_book, running it in input_dir}
+\title{Wrapper of \code{bookdown::render_book}, running it in input_dir}
 \usage{
 bookme(input_dir, input_files = "*", output_dir = NULL, output_format = NULL)
 }
@@ -20,21 +20,23 @@ want to render them all (the default)}
 character vector with the path to the output
 }
 \description{
-bookdown::render_book renders "multiple R Markdown files
+\code{bookdown::render_book} renders "multiple R Markdown files
 under the current working directory into a book".
-TODO: it seems this restriction will be lifted in the next bookdown release
+TODO: it seems this restriction will be lifted in the next \code{bookdown} release
 so let's see when it is out and adjust here as necessary
 That is, IMHO, unfortunate. In particular, when the book
-is not the root of your project, you would have to mess with
-setwd() or the like and {here} won't help you either.
-This function works around this issue by leveraging xfun::in_dir
-to run bookdown::render_book in the input_dir of your choice.
-Then I do not have to deal myself with setwd() and changing it back.
+is not in the root of your project, you would have to mess with
+\code{setwd()} or the like and \code{{here}} won't help you either.
+This function works around this issue by leveraging \code{xfun::in_dir}
+to run \code{bookdown::render_book} in the \code{input_dir} of your choice.
+Then we do not have to deal ourselves with \code{setwd()} and changing it back.
 }
 \details{
-In addition, the function calls base::shell to open the book in the
+In addition, the function calls \code{base::shell} to try and open the book in the
 default viewer for the output
 }
 \examples{
+\dontrun{
 bookme("report")
+}
 }

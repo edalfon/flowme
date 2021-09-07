@@ -20,7 +20,11 @@ Imports:
     usethis,
     fs,
     desc,
-    remotes
+    remotes,
+    bookdown,
+    purrr,
+    tarchetypes,
+    targets
 Suggests: 
     testthat (>= 3.0.0),
     spelling,
