@@ -106,14 +106,14 @@
 <a href="#we-are-transitioning-to-targets" class="anchor"></a>We are transitioning to {targets} …</h1>
 <p>So, we now include a bare-bones {targets} project template that you can use using <code><a href="../reference/targetsme.html">flowme::targetsme()</a></code> or <code><a href="../reference/targetsme.html">flowme::use_targets()</a></code>, which includes the following files in your current project:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>.</span>
-<span id="cb1-2"><a href="#cb1-2"></a>├── .Rprofile</span>
-<span id="cb1-3"><a href="#cb1-3"></a>├── R</span>
-<span id="cb1-4"><a href="#cb1-4"></a>│   └── overrides.R</span>
+<span id="cb1-2"><a href="#cb1-2"></a>├── R</span>
+<span id="cb1-3"><a href="#cb1-3"></a>│   └── overrides.R</span>
+<span id="cb1-4"><a href="#cb1-4"></a>├── _Rprofile</span>
 <span id="cb1-5"><a href="#cb1-5"></a>├── _targets.R</span>
 <span id="cb1-6"><a href="#cb1-6"></a>└── report</span>
-<span id="cb1-7"><a href="#cb1-7"></a>    ├── .gitignore</span>
-<span id="cb1-8"><a href="#cb1-8"></a>    ├── _bookdown.yml</span>
-<span id="cb1-9"><a href="#cb1-9"></a>    ├── _output.yml</span>
+<span id="cb1-7"><a href="#cb1-7"></a>    ├── _bookdown.yml</span>
+<span id="cb1-8"><a href="#cb1-8"></a>    ├── _output.yml</span>
+<span id="cb1-9"><a href="#cb1-9"></a>    ├── _style.docx</span>
 <span id="cb1-10"><a href="#cb1-10"></a>    ├── chapter1.Rmd</span>
 <span id="cb1-11"><a href="#cb1-11"></a>    └── chapter2.Rmd</span></code></pre></div>
 <p>The aims are similar to those of our {drake} template (see <code><a href="../articles/drakeme.html">vignette("drakeme", package = "flowme")</a></code>). But currently our {targets} template is very thin. It only includes:</p>
