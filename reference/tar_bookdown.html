@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Wrapper of bookdown::render_book, running it in input_dir — bookme • flowme</title>
+<title>Target factory for bookdown — tar_bookdown • flowme</title>
 
 
 <!-- jquery -->
@@ -39,17 +39,12 @@
 
 
 
-<meta property="og:title" content="Wrapper of bookdown::render_book, running it in input_dir — bookme" />
-<meta property="og:description" content="bookdown::render_book renders &quot;multiple R Markdown files
-under the current working directory into a book&quot;.
-TODO: it seems this restriction will be lifted in the next bookdown release
-so let's see when it is out and adjust here as necessary
-That is, IMHO, unfortunate. In particular, when the book
-is not in the root of your project, you would have to mess with
-setwd() or the like and {here} won't help you either.
-This function works around this issue by leveraging xfun::in_dir
-to run bookdown::render_book in the input_dir of your choice.
-Then we do not have to deal ourselves with setwd() and changing it back." />
+<meta property="og:title" content="Target factory for bookdown — tar_bookdown" />
+<meta property="og:description" content="targets and tarchetypes make it straightforward to include individual
+&quot;dependency-aware R Markdown reports inside the individual targets of a pipeline&quot;
+But a bookdown-based approach can be tricky. This function creates targets
+to let you concisely (e.g. tar_bookdown(&quot;report&quot;)) include a bookdown
+report in your pipeline, letting targets do its magic handling dependencies." />
 
 
 
@@ -145,25 +140,25 @@ Then we do not have to deal ourselves with setwd() and changing it back." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Wrapper of <code>bookdown::render_book</code>, running it in input_dir</h1>
-    <small class="dont-index">Source: <a href='https://github.com/edalfon/flowme/blob/master/R/bookme.R'><code>R/bookme.R</code></a></small>
-    <div class="hidden name"><code>bookme.Rd</code></div>
+    <h1>Target factory for bookdown</h1>
+    <small class="dont-index">Source: <a href='https://github.com/edalfon/flowme/blob/master/R/targets.R'><code>R/targets.R</code></a></small>
+    <div class="hidden name"><code>tar_bookdown.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p><code><a href='https://pkgs.rstudio.com/bookdown/reference/render_book.html'>bookdown::render_book</a></code> renders "multiple R Markdown files
-under the current working directory into a book".
-TODO: it seems this restriction will be lifted in the next <code>bookdown</code> release
-so let's see when it is out and adjust here as necessary
-That is, IMHO, unfortunate. In particular, when the book
-is not in the root of your project, you would have to mess with
-<code><a href='https://rdrr.io/r/base/getwd.html'>setwd()</a></code> or the like and <code>{here}</code> won't help you either.
-This function works around this issue by leveraging <code><a href='https://rdrr.io/pkg/xfun/man/in_dir.html'>xfun::in_dir</a></code>
-to run <code><a href='https://pkgs.rstudio.com/bookdown/reference/render_book.html'>bookdown::render_book</a></code> in the <code>input_dir</code> of your choice.
-Then we do not have to deal ourselves with <code><a href='https://rdrr.io/r/base/getwd.html'>setwd()</a></code> and changing it back.</p>
+    <p><code>targets</code> and <code>tarchetypes</code> make it straightforward to include individual
+<a href='https://books.ropensci.org/targets/files.html#literate-programming'>"dependency-aware R Markdown reports inside the individual targets of a pipeline"</a>
+But a <code>bookdown</code>-based approach can be tricky. This function creates targets
+to let you concisely (e.g. tar_bookdown("report")) include a <code>bookdown</code>
+report in your pipeline, letting targets do its magic handling dependencies.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>bookme</span><span class='op'>(</span><span class='va'>input_dir</span>, input_files <span class='op'>=</span> <span class='st'>"*"</span>, output_dir <span class='op'>=</span> <span class='cn'>NULL</span>, output_format <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>tar_bookdown</span><span class='op'>(</span>
+  input_dir <span class='op'>=</span> <span class='st'>"report"</span>,
+  input_files <span class='op'>=</span> <span class='st'>"."</span>,
+  output_dir <span class='op'>=</span> <span class='cn'>NULL</span>,
+  output_format <span class='op'>=</span> <span class='cn'>NULL</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -189,15 +184,57 @@ want to render them all (the default)</p></td>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>character vector with the path to the output</p>
+    <p>a list of targets, including one target for each .Rmd file in
+input_dir and one target for the bookdown output, that depends on all
+.Rmd files</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>In addition, the function calls <code><a href='https://rdrr.io/r/base/system.html'>base::shell</a></code> to try and open the book in the
-default viewer for the output</p>
+    <p>So, this function</p><ul>
+<li><p>receives <code>input_dir</code>, typically a subfolder in your project that includes
+all .Rmd files and <code>bookdown</code> config files</p></li>
+<li><p>creates one target per .Rmd file in <code>input_dir</code>, making sure to include its
+dependencies (e.g. tar_read, tar_load calls within .Rmd files, detected via
+<code><a href='https://docs.ropensci.org/tarchetypes/reference/tar_knitr_deps.html'>tarchetypes::tar_knitr_deps</a></code>)</p></li>
+<li><p>includes also a single target for the <code>bookdown</code> report, that depends on
+all the individual targets corresponding to .Rmd files</p></li>
+<li><p>returns all the targets above as a list to be included in your pipeline
+(please note all targets are format = "file")</p></li>
+</ul>
+
+<p>Note that when running your pipeline, the bookdown target renders the book
+using <code><a href='bookme.html'>flowme::bookme</a></code> which is simply a wrapper around
+<code><a href='https://pkgs.rstudio.com/bookdown/reference/render_book.html'>bookdown::render_book</a></code> to deal with <code>bookdown</code>'s restrictions and  be able
+to render in subdirectories. This collides with the stricter (compared to
+.drake) policy of <code>targets</code> to find the data store (_targets/) at the
+project root.</p>
+<p>EDIT: now it seems <code>targets</code> is more flexible and you can
+configure the location using <code>tar_config_set()</code>. Yet, the discussion below
+still applies because we need to deal with temporarily changing working
+directory to make bookdown work).</p>
+<p><code><a href='bookme.html'>flowme::bookme</a></code> changes working directory to <code>input_dir</code> to render the book.
+Thus, when you call <code>tar_read</code> in an .Rmd, <code>targets</code> will look for the data
+store in <code>input_dir</code> and not in your project root where it probably lies,
+leading your pipeline to fail. To circumvent this issue, there are a few
+alternatives you can use when retrieving targets in your .Rmd.</p><ul>
+<li><p>change the store directly to a hard-coded value, which is probably the less
+verbose alternative, but it is not robust or portable (e.g. if you nest
+the bookdown folder into other directories)</p><ul>
+<li><p><code>tar_read(data, store = "..")</code></p></li>
+</ul></li>
+<li><p>also change the store, but using <code>here</code> to help you find the data store</p><ul>
+<li><p><code>tar_read(data, store = here::here(targets::tar_config_get("store")))</code></p></li>
+</ul></li>
+<li><p>change the working directory again, temporarily</p><ul>
+<li><p><code><a href='https://rdrr.io/pkg/xfun/man/in_dir.html'>xfun::in_dir(here::here(), tar_read(data))</a></code> # or withr::with_dir</p></li>
+</ul></li>
+<li><p>TODO: there might be a better way to do it. Try and find it. Meanwhile,
+this works.</p></li>
+</ul>
+
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
-<span class='fu'>bookme</span><span class='op'>(</span><span class='st'>"report"</span><span class='op'>)</span>
+<span class='fu'>tar_bookdown</span><span class='op'>(</span><span class='st'>"report"</span><span class='op'>)</span>
 <span class='op'>}</span>
 </div></pre>
   </div>

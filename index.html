@@ -66,6 +66,9 @@
 <li>
       <a href="articles/drakeme.html">drakeme</a>
     </li>
+    <li>
+      <a href="articles/targetsme.html">targetsme</a>
+    </li>
   </ul>
 </li>
       </ul>
@@ -93,7 +96,7 @@
 <a href="#flowme" class="anchor"></a>flowme</h1></div>
 <!-- badges: start -->
 <!-- badges: end -->
-<p>A little package to quickly include templates for our project structures and workflows. Originally based on McBain’s <a href="https://github.com/MilesMcBain/dflow"><code>dflow</code></a> for drake workflows and tailored to our report-generating projects. But we will be including other approaches here as well.</p>
+<p>A little package to quickly include templates for our project structures and workflows.</p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
@@ -101,11 +104,25 @@
 <code class="sourceCode R"><span class="co"># install.packages("remotes") # just in case</span>
 <span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"edalfon/flowme"</span><span class="op">)</span></code></pre></div>
 </div>
+<div id="example-setup-a-targets-project" class="section level2">
+<h2 class="hasAnchor">
+<a href="#example-setup-a-targets-project" class="anchor"></a>Example: setup a {targets} project</h2>
+<p>A very thin -yet fully functional- template for a <a href="https://docs.ropensci.org/targets/">targets</a> project.</p>
+<p>You just type:</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">flowme</span><span class="fu">::</span><span class="fu"><a href="reference/targetsme.html">use_targets</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># alias flowme::targetsme()</span></code></pre></div>
+<p>And get the bare bones infrastructure for a <a href="https://docs.ropensci.org/targets/">targets</a> project that compiles a report using <a href="https://github.com/rstudio/bookdown">bookdown</a>. Then you can simply run the pipeline (<code><a href="https://docs.ropensci.org/targets/reference/tar_make.html">targets::tar_make()</a></code>) to compile a sample report that should get you started.</p>
+<p>Here’s how the sample pipeline looks like:</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">targets</span><span class="fu">::</span><span class="fu"><a href="https://docs.ropensci.org/targets/reference/tar_visnetwork.html">tar_visnetwork</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<p><img src="reference/figures/README-targets-graph.png"><!-- --></p>
+<p>See some more details in <code><a href="articles/targetsme.html">vignette("targetsme", package = "flowme")</a></code></p>
+</div>
 <div id="example-setup-a-drake-project" class="section level2">
 <h2 class="hasAnchor">
-<a href="#example-setup-a-drake-project" class="anchor"></a>Example: setup a drake project</h2>
+<a href="#example-setup-a-drake-project" class="anchor"></a>Example: setup a {drake} project</h2>
 <p>Having <code>flowme</code> installed, you would only need to call</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">flowme</span><span class="fu">::</span><span class="fu"><a href="reference/drakeme.html">drakeme</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p>It gets you started to an empty but ready-to-fly drake project (including key dependencies).</p>
 <p>Using <code>drake::vis_drake_graph()</code> you can peek at the drake dependency graph for this boilerplate.</p>

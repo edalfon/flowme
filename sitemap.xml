@@ -16,6 +16,12 @@
     <loc>https://edalfon.github.io/flowme//reference/pipe.html</loc>
   </url>
   <url>
+    <loc>https://edalfon.github.io/flowme//reference/tar_bookdown.html</loc>
+  </url>
+  <url>
+    <loc>https://edalfon.github.io/flowme//reference/targetsme.html</loc>
+  </url>
+  <url>
     <loc>https://edalfon.github.io/flowme//reference/use_drake_description.html</loc>
   </url>
   <url>
@@ -25,9 +31,18 @@
     <loc>https://edalfon.github.io/flowme//reference/use_drake_templates.html</loc>
   </url>
   <url>
+    <loc>https://edalfon.github.io/flowme//reference/use_targets_gitignore.html</loc>
+  </url>
+  <url>
+    <loc>https://edalfon.github.io/flowme//reference/use_targets_templates.html</loc>
+  </url>
+  <url>
     <loc>https://edalfon.github.io/flowme//articles/drakeme.html</loc>
   </url>
   <url>
     <loc>https://edalfon.github.io/flowme//articles/flowme.html</loc>
+  </url>
+  <url>
+    <loc>https://edalfon.github.io/flowme//articles/targetsme.html</loc>
   </url>
 </urlset>
