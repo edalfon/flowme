@@ -130,7 +130,7 @@ use_targets_templates <- function() {
     ignore = TRUE, open = TRUE, package = "flowme"
   )
   usethis::use_template(
-    template = "targets/.Rprofile", save_as = ".Rprofile",
+    template = "targets/_Rprofile", save_as = ".Rprofile",
     ignore = TRUE, open = TRUE, package = "flowme"
   )
   fs::file_create(".here") # to fix project root, in case there is no already
@@ -168,10 +168,6 @@ use_targets_templates <- function() {
     template = "targets/report/chapter2.Rmd", save_as = "report/chapter2.Rmd",
     ignore = TRUE, open = TRUE, package = "flowme"
   )
-  usethis::use_template(
-    template = "targets/report/.gitignore", save_as = "report/.gitignore",
-    ignore = TRUE, open = TRUE, package = "flowme"
-  )
 }
 
 #' Add entries to .gitignore, to ignore non-version-control-friendly files
@@ -182,4 +178,7 @@ use_targets_templates <- function() {
 use_targets_gitignore <- function() {
 
   usethis::use_git_ignore("_targets")
+  usethis::use_git_ignore("*.html", "report")
+  usethis::use_git_ignore("*.docx", "report")
+  usethis::use_git_ignore("*.md", "report")
 }
