@@ -73,11 +73,11 @@ the bookdown folder into other directories)
 }
 \item also change the store, but using \code{here} to help you find the data store
 \itemize{
-\item tar_read(data, store = here::here(targets::tar_config_get("store")))
+\item \code{tar_read(data, store = here::here(targets::tar_config_get("store")))}
 }
 \item change the working directory again, temporarily
 \itemize{
-\item xfun::in_dir(here::here(), tar_read(data)) # equivalently withr::with_dir
+\item \code{xfun::in_dir(here::here(), tar_read(data))} # or withr::with_dir
 }
 \item TODO: there might be a better way to do it. Try and find it. Meanwhile,
 this works.

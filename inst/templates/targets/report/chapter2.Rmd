@@ -1,0 +1,27 @@
+---
+title: "Report"
+output:
+  html_notebook:
+    toc: yes
+    toc_float:
+      collapsed: no
+    number_sections: no
+    code_folding: hide
+always_allow_html: true
+---
+
+```{r include=FALSE}
+knitr::opts_chunk$set(
+  echo = ech <- FALSE, warning = ech, message = ech, error = ech, 
+  include = TRUE, cache.comments = TRUE, cache = FALSE, fig.height = 4, 
+  fig.width = 5
+)
+```
+
+
+# Chapter 2: only fake data here
+
+```{r}
+tar_read(fake_data)
+```
+

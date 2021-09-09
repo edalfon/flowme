@@ -1,0 +1,19 @@
+bookdown::gitbook:
+  lib_dir: assets
+  split_by: section
+  config:
+    toolbar:
+      position: static
+
+bookdown::word_document2:
+  reference_docx: _style.docx
+  fig_caption: yes
+
+# https://bookdown.org/yihui/bookdown/build-the-book.html
+# The most important argument is output_format, which can take a character
+# string of the output format (e.g., 'bookdown::gitbook'). You can leave this
+# argument empty, and the default output format will be the first output format
+# specified in the YAML metadata of the first Rmd file or a separate YAML file
+# _output.yml, as mentioned in Section 4.4. If you plan to generate multiple
+# output formats for a book, you are recommended to specify all formats in
+# _output.yml.

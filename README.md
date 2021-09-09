@@ -7,10 +7,7 @@
 <!-- badges: end -->
 
 A little package to quickly include templates for our project structures
-and workflows. Originally based on McBain’s
-[`dflow`](https://github.com/MilesMcBain/dflow) for drake workflows and
-tailored to our report-generating projects. But we will be including
-other approaches here as well.
+and workflows.
 
 ## Installation
 
@@ -19,7 +16,32 @@ other approaches here as well.
 remotes::install_github("edalfon/flowme")
 ```
 
-## Example: setup a drake project
+## Example: setup a {targets} project
+
+A very thin -yet fully functional- template for a `{targets}` project.
+
+You just type:
+
+``` r
+flowme::use_targets() # alias flowme::targetsme()
+```
+
+And get the bare bones infrastructure for a `{targets}` project that
+compiles a report using `{bookdown}`. Then you can simply run the
+pipeline (`targets::tar_make()`) to compile a sample report that should
+get you started.
+
+Here’s how the sample pipeline looks like:
+
+``` r
+targets::tar_visnetwork()
+```
+
+![](man/figures/README-targets-graph.png)<!-- -->
+
+See some more details in `vignette("targetsme", package = "flowme")`
+
+## Example: setup a {drake} project
 
 Having `flowme` installed, you would only need to call
 

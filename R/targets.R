@@ -41,9 +41,9 @@
 #'   the bookdown folder into other directories)
 #'   + `tar_read(data, store = "..")`
 #' - also change the store, but using `here` to help you find the data store
-#'   + tar_read(data, store = here::here(targets::tar_config_get("store")))
+#'   + `tar_read(data, store = here::here(targets::tar_config_get("store")))`
 #' - change the working directory again, temporarily
-#'   + xfun::in_dir(here::here(), tar_read(data)) # equivalently withr::with_dir
+#'   + `xfun::in_dir(here::here(), tar_read(data))` # or withr::with_dir
 #' - TODO: there might be a better way to do it. Try and find it. Meanwhile,
 #'   this works.
 #'
@@ -91,4 +91,95 @@ tar_bookdown <- function(input_dir = "report", input_files = ".",
   )
 
   list(rmd_files_targets, report_target)
+}
+
+
+
+#' Add files and directories for a targets-powered project.
+#'
+#' Add boilerplate code to the current project for a targets-based project
+#' - Copy templates to the current project.
+#' - Include entries in .gitignore to prevent some files into version control
+#'
+#' @export
+#' @md
+targetsme <- function() {
+
+  use_targets_templates()
+  use_targets_gitignore()
+}
+
+#' @rdname targetsme
+#' @export
+use_targets <- targetsme
+
+
+
+#' Copy `targets` templates to the current project
+#'
+#' TODO: let the user customize the "report" folder
+#' TODO: more convenient overwrite?
+#'
+#' @export
+#' @md
+use_targets_templates <- function() {
+
+  # targets file ####
+  usethis::use_template(
+    template = "targets/_targets.R", save_as = "_targets.R",
+    ignore = TRUE, open = TRUE, package = "flowme"
+  )
+  usethis::use_template(
+    template = "targets/.Rprofile", save_as = ".Rprofile",
+    ignore = TRUE, open = TRUE, package = "flowme"
+  )
+  fs::file_create(".here") # to fix project root, in case there is no already
+
+  # R files ####
+  fs::dir_create("R")
+  usethis::use_template(
+    template = "targets/R/overrides.R", save_as = "R/overrides.R",
+    ignore = FALSE, open = TRUE, package = "flowme"
+  )
+
+  # report files ####
+  usethis::use_directory("report", ignore = TRUE)
+  usethis::use_template(
+    template = "targets/report/_bookdown.yml", save_as = "report/_bookdown.yml",
+    ignore = TRUE, open = FALSE, package = "flowme"
+  )
+  usethis::use_template(
+    template = "targets/report/_output.yml", save_as = "report/_output.yml",
+    ignore = TRUE, open = FALSE, package = "flowme"
+  )
+
+  # Done differently because usethis::use_template does not handle well weird
+  # characters in .docx files (presumably, trying to put data in the template)
+  file.copy(
+    from = fs::path_package("flowme", "templates/targets/report/_style.docx"),
+    to = "report/_style.docx"
+  )
+
+  usethis::use_template(
+    template = "targets/report/chapter1.Rmd", save_as = "report/chapter1.Rmd",
+    ignore = TRUE, open = TRUE, package = "flowme"
+  )
+  usethis::use_template(
+    template = "targets/report/chapter2.Rmd", save_as = "report/chapter2.Rmd",
+    ignore = TRUE, open = TRUE, package = "flowme"
+  )
+  usethis::use_template(
+    template = "targets/report/.gitignore", save_as = "report/.gitignore",
+    ignore = TRUE, open = TRUE, package = "flowme"
+  )
+}
+
+#' Add entries to .gitignore, to ignore non-version-control-friendly files
+#' in this targets-based workflow
+#'
+#' @export
+#' @md
+use_targets_gitignore <- function() {
+
+  usethis::use_git_ignore("_targets")
 }
