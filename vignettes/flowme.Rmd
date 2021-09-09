@@ -15,5 +15,15 @@ knitr::opts_chunk$set(
 ```
 
 
+Currently we have here just two templates to quickly 
+get you started with our approach to `{drake}` or `{targets}` projects, that end up compiling a report using `{bookdown}`. The sample pipelines look like this:
+
+![](https://github.com/edalfon/flowme/raw/master/man/figures/README-targets-graph.png)<!-- -->
+
+See some more details in `vignette("targetsme", package = "flowme")`
+
+![](https://github.com/edalfon/flowme/raw/master/man/figures/README-drake-graph.png)<!-- -->
+
+See some more details in `vignette("drakeme", package = "flowme")`
 
 

@@ -65,6 +65,8 @@ indicated in `_drake.R`, write your results in `Rmd` files within the
 `report` directory and simply call `drake::r_make()` to render them all
 into a book.
 
+See some more details in `vignette("drakeme", package = "flowme")`
+
 ## [More details](https://edalfon.github.io/flowme/articles/flowme.html)
 
 More details on the proposed workflow in [`flowme`’s web
