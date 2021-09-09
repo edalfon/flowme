@@ -125,6 +125,7 @@ use_targets <- targetsme
 use_targets_templates <- function() {
 
   # targets file ####
+  fs::file_create(".here") # to fix project root, in case there is no already
   usethis::use_template(
     template = "targets/_targets.R", save_as = "_targets.R",
     ignore = TRUE, open = TRUE, package = "flowme"
@@ -133,7 +134,6 @@ use_targets_templates <- function() {
     template = "targets/_Rprofile", save_as = ".Rprofile",
     ignore = TRUE, open = TRUE, package = "flowme"
   )
-  fs::file_create(".here") # to fix project root, in case there is no already
 
   # R files ####
   fs::dir_create("R")
@@ -160,6 +160,10 @@ use_targets_templates <- function() {
     to = "report/_style.docx"
   )
 
+  usethis::use_template(
+    template = "targets/report/index.Rmd", save_as = "report/index.Rmd",
+    ignore = TRUE, open = TRUE, package = "flowme"
+  )
   usethis::use_template(
     template = "targets/report/chapter1.Rmd", save_as = "report/chapter1.Rmd",
     ignore = TRUE, open = TRUE, package = "flowme"

@@ -56,6 +56,7 @@ use_drake_description <- function(install_deps = TRUE) {
 use_drake_templates <- function() {
 
   # drake file ####
+  fs::file_create(".here") # to fix project root, in case there is no already
   usethis::use_template(
     template = "drake/_drake.R", save_as = "_drake.R",
     ignore = TRUE, open = TRUE, package = "flowme"
