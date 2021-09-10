@@ -3,7 +3,7 @@
 # don't like that it is not explicitly linked in _targets.R, but ...
 
 if(!requireNamespace("pacman", quietly = TRUE)) {
-  install.packages("pacman")
+  utils::install.packages("pacman")
 }
 
 pacman::p_load(
@@ -18,7 +18,7 @@ pacman::p_load(
 
 # let's also use xfun::pkg_load
 if(!requireNamespace("xfun", quietly = TRUE)) {
-  install.packages("xfun")
+  utils::install.packages("xfun")
 }
 xfun::pkg_load(
   c(
