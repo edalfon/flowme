@@ -1,6 +1,6 @@
 Package: flowme
 Title: Add boilerplate code to your project for some specific workflows
-Version: 0.1.0
+Version: 0.1.1
 Authors@R: 
     person(given = "Eduardo",
            family = "Alfonso-Sierra",
