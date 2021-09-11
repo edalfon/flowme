@@ -106,6 +106,7 @@ tar_bookdown <- function(input_dir = "report", input_files = ".",
 targetsme <- function() {
 
   use_targets_templates()
+  use_targets_description()
   use_targets_gitignore()
 }
 
@@ -185,4 +186,25 @@ use_targets_gitignore <- function() {
   usethis::use_git_ignore("*.html", "report")
   usethis::use_git_ignore("*.docx", "report")
   usethis::use_git_ignore("*.md", "report")
+}
+
+#' Create a description file, including key dependencies to run the workflow
+#'
+#' TODO: restart rstudio, if available? should we?
+#'
+#' @param install_deps logical, whether to install dependencies
+#'
+#' @export
+#' @md
+use_targets_description <- function(install_deps = TRUE) {
+
+  usethis::use_description(check_name = FALSE)
+  desc::desc_set_dep("targets")
+  desc::desc_set_dep("tarchetypes")
+  desc::desc_set_dep("visNetwork")
+  desc::desc_set_dep("bookdown")
+
+  if (isTRUE(install_deps)) {
+    remotes::install_deps(upgrade = "never")
+  }
 }

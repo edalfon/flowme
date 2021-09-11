@@ -43,8 +43,11 @@ conflicted::conflict_prefer("filter", "dplyr", quiet = TRUE)
 conflicted::conflict_prefer("select", "dplyr", quiet = TRUE)
 conflicted::conflict_prefer("expand", "tidyr", quiet = TRUE)
 
-# make all fns available
-invisible(
-  lapply(list.files("./R", full.names = TRUE), source, encoding = "UTF-8")
-)
-
+# make all fns available to {targets} (and interactively, via load_all)
+if (rlang::is_interactive()) {
+  devtools::load_all()
+} else {
+  invisible(
+    lapply(list.files("./R", full.names = TRUE), source, encoding = "UTF-8")
+  )
+}
