@@ -72,7 +72,28 @@ tar_bookdown <- function(input_dir = "report", input_files = ".",
 
   rmd_files_targets <- purrr::map(rmd_files, ~targets::tar_target_raw(
     name = .x,
-    command = .x,
+    command = substitute(
+      expr = {
+        # this is hacky, ugly, fragile and error-prone, ..., but ...
+        # it's the only trick I quickly came up with to convince targets to
+        # build the report when there is a change in an upstream target
+        # (e.g. data) that an .Rmd file depends on. In such cases, targets
+        # correctly identifies and shows as outdated the upstream target,
+        # the .Rmd file target and the report target. But in running the
+        # pipeline, it builds the upstream target, the .Rmd file but skips
+        # the report. The problem must be that after building the .Rmd target,
+        # targets finds that it did not change and therefore there it no need
+        # to build the report. Touching the .Rmd file does not work either,
+        # I guess, because targets compare the hash of the file and not only
+        # the modification date. So this trick is just to try and write
+        # something to the end of the file to force a change in the file's
+        # hash and induce targets to build it. There must be a better way.
+        # Meanwhile, this works. TODO: find a better way.
+        write(" ", rmd_file, append = TRUE)
+        rmd_file
+      },
+      env = list(rmd_file = .x)
+    ),
     deps = tarchetypes::tar_knitr_deps(.x),
     format = "file"
   ))
