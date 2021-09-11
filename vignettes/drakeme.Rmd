@@ -66,14 +66,17 @@ could be highly controversial. Yet, they work for us).
 
 Here's the file structure `flowme::drakeme()` includes in your current project:
 
+```{r include=FALSE}
+example_dir <- fs::dir_create(paste0(tempdir(), "/drake_example"))
+xfun::in_dir(example_dir, flowme::use_drake())
+```
+
 ``` r
 ```{r echo=FALSE, results='asis'}
-xfun::in_dir(
-  fs::path_package("flowme", "templates/drake/"), 
-  fs::dir_tree(glob = "*.html", invert = TRUE)
-)
+xfun::in_dir(example_dir, fs::dir_tree(all = TRUE))
 ```
 ```
+
 
 
 ## Workflow notes

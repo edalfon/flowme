@@ -27,21 +27,22 @@ input_dir and one target for the bookdown output, that depends on all
 .Rmd files
 }
 \description{
-\code{targets} and \code{tarchetypes} make it straightforward to include individual
+\code{{targets}} and \code{{tarchetypes}} make it straightforward to include individual
 \href{https://books.ropensci.org/targets/files.html#literate-programming}{"dependency-aware R Markdown reports inside the individual targets of a pipeline"}
-But a \code{bookdown}-based approach can be tricky. This function creates targets
-to let you concisely (e.g. tar_bookdown("report")) include a \code{bookdown}
-report in your pipeline, letting targets do its magic handling dependencies.
+But a \code{{bookdown}}-based approach can be tricky. This function creates
+targets to let you concisely (e.g. \code{tar_bookdown("report")}) include a
+\code{bookdown} report in your pipeline, letting targets do its magic handling
+dependencies.
 }
 \details{
 So, this function
 \itemize{
 \item receives \code{input_dir}, typically a subfolder in your project that includes
-all .Rmd files and \code{bookdown} config files
+all .Rmd files and \code{{bookdown}} config files
 \item creates one target per .Rmd file in \code{input_dir}, making sure to include its
 dependencies (e.g. tar_read, tar_load calls within .Rmd files, detected via
 \code{tarchetypes::tar_knitr_deps})
-\item includes also a single target for the \code{bookdown} report, that depends on
+\item includes also a single target for the \code{{bookdown}} report, that depends on
 all the individual targets corresponding to .Rmd files
 \item returns all the targets above as a list to be included in your pipeline
 (please note all targets are format = "file")
@@ -49,18 +50,18 @@ all the individual targets corresponding to .Rmd files
 
 Note that when running your pipeline, the bookdown target renders the book
 using \code{flowme::bookme} which is simply a wrapper around
-\code{bookdown::render_book} to deal with \code{bookdown}'s restrictions and  be able
+\code{bookdown::render_book} to deal with \code{{bookdown}}'s restrictions and  be able
 to render in subdirectories. This collides with the stricter (compared to
-.drake) policy of \code{targets} to find the data store (_targets/) at the
+.drake) policy of \code{{targets}} to find the data store (_targets/) at the
 project root.
 
-EDIT: now it seems \code{targets} is more flexible and you can
+EDIT: now it seems \code{{targets}} is more flexible and you can
 configure the location using \code{tar_config_set()}. Yet, the discussion below
 still applies because we need to deal with temporarily changing working
 directory to make bookdown work).
 
 \code{flowme::bookme} changes working directory to \code{input_dir} to render the book.
-Thus, when you call \code{tar_read} in an .Rmd, \code{targets} will look for the data
+Thus, when you call \code{tar_read} in an .Rmd, \code{{targets}} will look for the data
 store in \code{input_dir} and not in your project root where it probably lies,
 leading your pipeline to fail. To circumvent this issue, there are a few
 alternatives you can use when retrieving targets in your .Rmd.

@@ -24,7 +24,8 @@ Imports:
     bookdown,
     purrr,
     tarchetypes,
-    targets
+    targets,
+    drake
 Suggests: 
     testthat (>= 3.0.0),
     spelling,

@@ -20,12 +20,14 @@ So, we now include a bare-bones {targets} project template that you can use
 using `flowme::targetsme()` or `flowme::use_targets()`, which includes
 the following files in your current project:
 
+```{r include=FALSE}
+example_dir <- fs::dir_create(paste0(tempdir(), "/targets_example"))
+xfun::in_dir(example_dir, flowme::use_targets())
+```
+
 ``` r
 ```{r echo=FALSE, results='asis'}
-xfun::in_dir(
-  fs::path_package("flowme", "templates/targets/"), 
-  fs::dir_tree(glob = "*.html", invert = TRUE, all = TRUE)
-)
+xfun::in_dir(example_dir, fs::dir_tree(all = TRUE))
 ```
 ```
 
@@ -34,7 +36,7 @@ package = "flowme")`). But currently our {targets} template is very thin. It
 only includes:
 
 - Fully functional `{targets}` project at the push of a button: once installed, 
-  `flowme` helps you setup a drake project
+  `flowme` helps you setup a project
   (`flowme::targetsme()`) that you can actually 
   run (`targets::tar_make()`) and see the output.
 

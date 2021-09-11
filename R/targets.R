@@ -1,37 +1,38 @@
 #' Target factory for bookdown
 #'
-#' `targets` and `tarchetypes` make it straightforward to include individual
+#' `{targets}` and `{tarchetypes}` make it straightforward to include individual
 #' ["dependency-aware R Markdown reports inside the individual targets of a
 #' pipeline"](https://books.ropensci.org/targets/files.html#literate-programming)
-#' But a `bookdown`-based approach can be tricky. This function creates targets
-#' to let you concisely (e.g. tar_bookdown("report")) include a `bookdown`
-#' report in your pipeline, letting targets do its magic handling dependencies.
+#' But a `{bookdown}`-based approach can be tricky. This function creates
+#' targets to let you concisely (e.g. `tar_bookdown("report")`) include a
+#' `bookdown` report in your pipeline, letting targets do its magic handling
+#' dependencies.
 #'
 #' So, this function
 #' - receives `input_dir`, typically a subfolder in your project that includes
-#'   all .Rmd files and `bookdown` config files
+#'   all .Rmd files and `{bookdown}` config files
 #' - creates one target per .Rmd file in `input_dir`, making sure to include its
 #'   dependencies (e.g. tar_read, tar_load calls within .Rmd files, detected via
 #'   `tarchetypes::tar_knitr_deps`)
-#' - includes also a single target for the `bookdown` report, that depends on
+#' - includes also a single target for the `{bookdown}` report, that depends on
 #'   all the individual targets corresponding to .Rmd files
 #' - returns all the targets above as a list to be included in your pipeline
 #'   (please note all targets are format = "file")
 #'
 #' Note that when running your pipeline, the bookdown target renders the book
 #' using `flowme::bookme` which is simply a wrapper around
-#' `bookdown::render_book` to deal with `bookdown`'s restrictions and  be able
+#' `bookdown::render_book` to deal with `{bookdown}`'s restrictions and  be able
 #' to render in subdirectories. This collides with the stricter (compared to
-#' .drake) policy of `targets` to find the data store (_targets/) at the
+#' .drake) policy of `{targets}` to find the data store (_targets/) at the
 #' project root.
 #'
-#' EDIT: now it seems `targets` is more flexible and you can
+#' EDIT: now it seems `{targets}` is more flexible and you can
 #' configure the location using `tar_config_set()`. Yet, the discussion below
 #' still applies because we need to deal with temporarily changing working
 #' directory to make bookdown work).
 #'
 #' `flowme::bookme` changes working directory to `input_dir` to render the book.
-#' Thus, when you call `tar_read` in an .Rmd, `targets` will look for the data
+#' Thus, when you call `tar_read` in an .Rmd, `{targets}` will look for the data
 #' store in `input_dir` and not in your project root where it probably lies,
 #' leading your pipeline to fail. To circumvent this issue, there are a few
 #' alternatives you can use when retrieving targets in your .Rmd.
@@ -125,8 +126,9 @@ use_targets <- targetsme
 #' @md
 use_targets_templates <- function() {
 
+  usethis::proj_set(".", force = TRUE)
+
   # targets file ####
-  fs::file_create(".here") # to fix project root, in case there is no already
   usethis::use_template(
     template = "targets/_targets.R", save_as = "_targets.R",
     ignore = TRUE, open = TRUE, package = "flowme"
