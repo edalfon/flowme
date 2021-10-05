@@ -23,15 +23,15 @@ Imports:
     remotes,
     bookdown,
     purrr,
-    tarchetypes,
-    targets,
-    drake
 Suggests: 
     testthat (>= 3.0.0),
     spelling,
     knitr,
     rmarkdown,
-    xfun
+    xfun,
+    tarchetypes,
+    targets,
+    drake
 Config/testthat/edition: 3
 VignetteBuilder: knitr
 URL: https://edalfon.github.io/flowme/, https://github.com/edalfon/flowme
