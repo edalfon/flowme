@@ -16,29 +16,6 @@ pacman::p_load(
   tarchetypes
 )
 
-# let's also use xfun::pkg_load
-if(!requireNamespace("xfun", quietly = TRUE)) {
-  utils::install.packages("xfun")
-}
-xfun::pkg_load(
-  c(
-    "conflicted",
-    "callr",
-    "visNetwork",
-    "arrow",
-    "assertr",
-    "waldo",
-    "qs",
-    "sessioninfo",
-    "tictoc",
-    "fs",
-    "here",
-    "purrr",
-    "bookdown"
-  ),
-  install = TRUE
-)
-
 conflicted::conflict_prefer("filter", "dplyr", quiet = TRUE)
 conflicted::conflict_prefer("select", "dplyr", quiet = TRUE)
 conflicted::conflict_prefer("expand", "tidyr", quiet = TRUE)

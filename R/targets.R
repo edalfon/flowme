@@ -125,10 +125,12 @@ tar_bookdown <- function(input_dir = "report", input_files = ".",
 #'
 #' @export
 #' @md
-targetsme <- function() {
+targetsme <- function(install_deps = TRUE) {
+
+  usethis::proj_set(".", force = TRUE)
 
   use_targets_templates()
-  use_targets_description()
+  use_targets_description(install_deps)
   use_targets_gitignore()
 }
 
@@ -146,8 +148,6 @@ use_targets <- targetsme
 #' @export
 #' @md
 use_targets_templates <- function() {
-
-  usethis::proj_set(".", force = TRUE)
 
   # targets file ####
   usethis::use_template(
@@ -226,6 +226,7 @@ use_targets_description <- function(install_deps = TRUE) {
   desc::desc_set_dep("tarchetypes")
   desc::desc_set_dep("visNetwork")
   desc::desc_set_dep("bookdown")
+  desc::desc_set_dep("conflicted")
 
   if (isTRUE(install_deps)) {
     remotes::install_deps(upgrade = "never")
