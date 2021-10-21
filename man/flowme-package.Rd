@@ -6,8 +6,7 @@
 \alias{flowme-package}
 \title{flowme: Add boilerplate code to your project for some specific workflows}
 \description{
-One function call to include in your current project tailored
-  files and directories to support some specific workflows.
+One function call to include in your current project tailored files and directories to support some specific workflows.
 }
 \seealso{
 Useful links:

@@ -5,9 +5,9 @@
 \alias{use_targets}
 \title{Add files and directories for a targets-powered project.}
 \usage{
-targetsme()
+targetsme(install_deps = TRUE)
 
-use_targets()
+use_targets(install_deps = TRUE)
 }
 \description{
 Add boilerplate code to the current project for a targets-based project

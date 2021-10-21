@@ -1,0 +1,11 @@
+Name: Run a targets pipeline as a job in RStudio
+Description: Calls targets::tar_make() as a job in RStudio
+Binding: tar_make_job
+Interactive: false
+
+
+Name: Visualize a targets dependency graph using custom arguments
+Description: Calls targets::tar_make() as a job in RStudio
+Binding: tar_visnetwork_custom
+Interactive: true
+

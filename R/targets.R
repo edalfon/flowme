@@ -232,3 +232,26 @@ use_targets_description <- function(install_deps = TRUE) {
     remotes::install_deps(upgrade = "never")
   }
 }
+
+
+#' Run a `{targets}` pipeline as a job in RStudio
+#'
+#' @export
+#' @md
+tar_make_job <- function () {
+  job::job(
+    {targets::tar_make()},
+    import = NULL,
+    packages = NULL,
+    title = "{targets} pipeline"
+  )
+}
+
+#' Visualize `{targets}` dependency graph using custom arguments
+#'
+#' @export
+#' @md
+tar_visnetwork_custom <- function () {
+  # TODO: read configuration file
+  targets::tar_visnetwork(targets_only = TRUE, label = "time")
+}
