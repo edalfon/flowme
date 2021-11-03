@@ -71,7 +71,7 @@ tar_bookdown <- function(input_dir = "report", input_files = ".",
   )
 
   rmd_files_targets <- purrr::map(rmd_files, ~targets::tar_target_raw(
-    name = .x,
+    name = make.names(.x),
     command = substitute(
       expr = {
         # this is hacky, ugly, fragile and error-prone, ..., but ...
@@ -109,7 +109,7 @@ tar_bookdown <- function(input_dir = "report", input_files = ".",
       )
     }),
     format = "file",
-    deps = rmd_files
+    deps = make.names(rmd_files)
   )
 
   list(rmd_files_targets, report_target)
