@@ -23,7 +23,6 @@ Imports:
     remotes,
     bookdown,
     purrr,
-    here,
     yaml,
     rstudioapi,
     job
@@ -36,6 +35,7 @@ Suggests:
     tarchetypes,
     targets,
     drake,
+    here,
     covr
 Config/testthat/edition: 3
 VignetteBuilder: knitr
