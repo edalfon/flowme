@@ -35,7 +35,8 @@ Suggests:
     xfun,
     tarchetypes,
     targets,
-    drake
+    drake,
+    covr
 Config/testthat/edition: 3
 VignetteBuilder: knitr
 URL: https://edalfon.github.io/flowme/, https://github.com/edalfon/flowme
