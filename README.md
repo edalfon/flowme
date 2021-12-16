@@ -4,7 +4,13 @@
 # flowme
 
 <!-- badges: start -->
+
+[![Codecov test
+coverage](https://codecov.io/gh/edalfon/flowme/branch/master/graph/badge.svg)](https://app.codecov.io/gh/edalfon/flowme?branch=master)
+[![R-CMD-check](https://github.com/edalfon/flowme/workflows/R-CMD-check/badge.svg)](https://github.com/edalfon/flowme/actions)
 <!-- badges: end -->
+
+[![codecov](https://codecov.io/gh/edalfon/flowme/branch/master/graph/badge.svg?token=BJLQPK6P5F)](https://codecov.io/gh/edalfon/flowme)
 
 A little package to quickly include templates for our project structures
 and workflows.
