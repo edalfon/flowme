@@ -158,6 +158,10 @@ use_targets_templates <- function() {
     template = "targets/_Rprofile", save_as = ".Rprofile",
     ignore = TRUE, open = TRUE, package = "flowme"
   )
+  usethis::use_template(
+    template = "targets/tar_visnetwork.yml", save_as = "tar_visnetwork.yml",
+    ignore = TRUE, open = TRUE, package = "flowme"
+  )
 
   # R files ####
   fs::dir_create("R")
@@ -239,6 +243,9 @@ use_targets_description <- function(install_deps = TRUE) {
 #' @export
 #' @md
 tar_make_job <- function () {
+
+  rstudioapi::documentSaveAll()
+
   job::job(
     {targets::tar_make()},
     import = NULL,
@@ -252,6 +259,26 @@ tar_make_job <- function () {
 #' @export
 #' @md
 tar_visnetwork_custom <- function () {
-  # TODO: read configuration file
-  targets::tar_visnetwork(targets_only = TRUE, label = "time")
+  rstudioapi::documentSaveAll()
+
+  if (file.exists("tar_visnetwork.yml")) {
+    custom_params <- yaml::read_yaml("tar_visnetwork.yml")
+    if (is.null(custom_params)) custom_params <- list()
+  } else {
+    custom_params <- list(targets_only = TRUE, label = "time")
+  }
+
+  custom_visnetwork <- do.call(targets::tar_visnetwork, custom_params)
+
+  # TODO: let also customize options below and find a not-so-hacky way
+  #       currently doing it like this, because calling visNetwork fns
+  #       would override all options and legend configuration, forcing me
+  #       to recreate them all
+  # visNetwork::visOptions(nodesIdSelection = TRUE)
+  # visNetwork::visLegend(width = 0.1) would override all legend config
+  custom_visnetwork$x$idselection$enabled <- TRUE
+  custom_visnetwork$x$legend$width <- 0.1
+
+  custom_visnetwork
 }
+
