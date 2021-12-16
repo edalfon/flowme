@@ -9,6 +9,9 @@ targetsme(install_deps = TRUE)
 
 use_targets(install_deps = TRUE)
 }
+\arguments{
+\item{install_deps}{logical, whether to install dependencies}
+}
 \description{
 Add boilerplate code to the current project for a targets-based project
 \itemize{

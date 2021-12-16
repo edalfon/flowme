@@ -123,6 +123,8 @@ tar_bookdown <- function(input_dir = "report", input_files = ".",
 #' - Copy templates to the current project.
 #' - Include entries in .gitignore to prevent some files into version control
 #'
+#' @inheritParams use_targets_description
+#'
 #' @export
 #' @md
 targetsme <- function(install_deps = TRUE) {
