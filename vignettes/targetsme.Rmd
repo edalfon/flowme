@@ -21,13 +21,13 @@ using `flowme::targetsme()` or `flowme::use_targets()`, which includes
 the following files in your current project:
 
 ```{r include=FALSE}
-example_dir <- fs::dir_create(paste0(tempdir(), "/targets_example"))
-xfun::in_dir(example_dir, flowme::use_targets())
+#example_dir <- fs::dir_create(paste0(tempdir(), "/targets_example"))
+#xfun::in_dir(example_dir, flowme::use_targets())
 ```
 
 ``` r
 ```{r echo=FALSE, results='asis'}
-xfun::in_dir(example_dir, fs::dir_tree(all = TRUE))
+#xfun::in_dir(example_dir, fs::dir_tree(all = TRUE))
 ```
 ```
 
