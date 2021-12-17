@@ -127,8 +127,20 @@
 <li><p><strong>A <code>bookdown</code>-based report/book in the flow</strong>: <code><a href="../reference/drakeme.html">flowme::drakeme()</a></code> sets the stage for the project to produce a report with <code>bookdown</code>. You simply add <code>Rmd</code> files to the “report” folder and you are good to go. This is achieved by including a target at the end of the plan to render all <code>Rmd</code> files in the <code>report</code> directory into a single book. Thus, you do not have to include one target for each <code>Rmd</code>, but rather just work on your <code>Rmd</code> and put them all in the <code>report</code> directory. Take a look at <code>plan_bookme()</code> and <code><a href="../reference/bookme.html">bookme()</a></code> to see how this is done.</p></li>
 </ul>
 <p>Here’s the file structure <code><a href="../reference/drakeme.html">flowme::drakeme()</a></code> includes in your current project:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"></code></pre></div>
+<pre><code>+-- .gitignore
++-- .Rbuildignore
++-- DESCRIPTION
++-- R
+|   +-- 0_packages.R
+|   +-- drakeme.R
+|   +-- plan_bookme.R
+|   \-- plan_sessioninfo.R
++-- report
+|   +-- chapter1.Rmd
+|   +-- _bookdown.yml
+|   +-- _output.yml
+|   \-- _style.docx
+\-- _drake.R</code></pre>
 </div>
 <div class="section level2">
 <h2 id="workflow-notes">Workflow notes<a class="anchor" aria-label="anchor" href="#workflow-notes"></a>

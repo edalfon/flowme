@@ -101,8 +101,22 @@
 <h1 id="we-are-transitioning-to-targets">We are transitioning to {targets} …<a class="anchor" aria-label="anchor" href="#we-are-transitioning-to-targets"></a>
 </h1>
 <p>So, we now include a bare-bones {targets} project template that you can use using <code><a href="../reference/targetsme.html">flowme::targetsme()</a></code> or <code><a href="../reference/targetsme.html">flowme::use_targets()</a></code>, which includes the following files in your current project:</p>
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"></code></pre></div>
+<pre><code>+-- .gitignore
++-- .Rbuildignore
++-- .Rprofile
++-- DESCRIPTION
++-- tar_visnetwork.yml
++-- _targets.R
++-- R
+|   \-- overrides.R
++-- report
+|   +-- .gitignore
+|   +-- chapter1.Rmd
+|   +-- chapter2.Rmd
+|   +-- index.Rmd
+|   +-- _bookdown.yml
+|   +-- _output.yml
+|   \-- _style.docx</code></pre>
 <p>The aims are similar to those of our {drake} template (see <code><a href="../articles/drakeme.html">vignette("drakeme", package = "flowme")</a></code>). But currently our {targets} template is very thin. It only includes:</p>
 <ul>
 <li><p>Fully functional <a href="https://docs.ropensci.org/targets/" class="external-link">targets</a> project at the push of a button: once installed, <code>flowme</code> helps you setup a project (<code><a href="../reference/targetsme.html">flowme::targetsme()</a></code>) that you can actually run (<code><a href="https://docs.ropensci.org/targets/reference/tar_make.html" class="external-link">targets::tar_make()</a></code>) and see the output.</p></li>
