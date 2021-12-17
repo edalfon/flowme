@@ -1,51 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://edalfon.github.io/flowme//index.html</loc>
+    <loc>https://edalfon.github.io/flowme/404.html</loc>
   </url>
   <url>
-    <loc>https://edalfon.github.io/flowme//reference/bookme.html</loc>
+    <loc>https://edalfon.github.io/flowme/LICENSE-text.html</loc>
   </url>
   <url>
-    <loc>https://edalfon.github.io/flowme//reference/drakeme.html</loc>
+    <loc>https://edalfon.github.io/flowme/LICENSE.html</loc>
   </url>
   <url>
-    <loc>https://edalfon.github.io/flowme//reference/flowme-package.html</loc>
+    <loc>https://edalfon.github.io/flowme/articles/drakeme.html</loc>
   </url>
   <url>
-    <loc>https://edalfon.github.io/flowme//reference/pipe.html</loc>
+    <loc>https://edalfon.github.io/flowme/articles/flowme.html</loc>
   </url>
   <url>
-    <loc>https://edalfon.github.io/flowme//reference/tar_bookdown.html</loc>
+    <loc>https://edalfon.github.io/flowme/articles/index.html</loc>
   </url>
   <url>
-    <loc>https://edalfon.github.io/flowme//reference/targetsme.html</loc>
+    <loc>https://edalfon.github.io/flowme/articles/targetsme.html</loc>
   </url>
   <url>
-    <loc>https://edalfon.github.io/flowme//reference/use_drake_description.html</loc>
+    <loc>https://edalfon.github.io/flowme/authors.html</loc>
   </url>
   <url>
-    <loc>https://edalfon.github.io/flowme//reference/use_drake_gitignore.html</loc>
+    <loc>https://edalfon.github.io/flowme/index.html</loc>
   </url>
   <url>
-    <loc>https://edalfon.github.io/flowme//reference/use_drake_templates.html</loc>
+    <loc>https://edalfon.github.io/flowme/reference/bookme.html</loc>
   </url>
   <url>
-    <loc>https://edalfon.github.io/flowme//reference/use_targets_description.html</loc>
+    <loc>https://edalfon.github.io/flowme/reference/drakeme.html</loc>
   </url>
   <url>
-    <loc>https://edalfon.github.io/flowme//reference/use_targets_gitignore.html</loc>
+    <loc>https://edalfon.github.io/flowme/reference/flowme-package.html</loc>
   </url>
   <url>
-    <loc>https://edalfon.github.io/flowme//reference/use_targets_templates.html</loc>
+    <loc>https://edalfon.github.io/flowme/reference/index.html</loc>
   </url>
   <url>
-    <loc>https://edalfon.github.io/flowme//articles/drakeme.html</loc>
+    <loc>https://edalfon.github.io/flowme/reference/pipe.html</loc>
   </url>
   <url>
-    <loc>https://edalfon.github.io/flowme//articles/flowme.html</loc>
+    <loc>https://edalfon.github.io/flowme/reference/tar_bookdown.html</loc>
   </url>
   <url>
-    <loc>https://edalfon.github.io/flowme//articles/targetsme.html</loc>
+    <loc>https://edalfon.github.io/flowme/reference/tar_make_job.html</loc>
+  </url>
+  <url>
+    <loc>https://edalfon.github.io/flowme/reference/tar_visnetwork_custom.html</loc>
+  </url>
+  <url>
+    <loc>https://edalfon.github.io/flowme/reference/targetsme.html</loc>
+  </url>
+  <url>
+    <loc>https://edalfon.github.io/flowme/reference/use_drake_description.html</loc>
+  </url>
+  <url>
+    <loc>https://edalfon.github.io/flowme/reference/use_drake_gitignore.html</loc>
+  </url>
+  <url>
+    <loc>https://edalfon.github.io/flowme/reference/use_drake_templates.html</loc>
+  </url>
+  <url>
+    <loc>https://edalfon.github.io/flowme/reference/use_targets_description.html</loc>
+  </url>
+  <url>
+    <loc>https://edalfon.github.io/flowme/reference/use_targets_gitignore.html</loc>
+  </url>
+  <url>
+    <loc>https://edalfon.github.io/flowme/reference/use_targets_templates.html</loc>
   </url>
 </urlset>
