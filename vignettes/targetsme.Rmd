@@ -20,15 +20,29 @@ So, we now include a bare-bones {targets} project template that you can use
 using `flowme::targetsme()` or `flowme::use_targets()`, which includes
 the following files in your current project:
 
-```{r include=FALSE}
-#example_dir <- fs::dir_create(paste0(tempdir(), "/targets_example"))
-#xfun::in_dir(example_dir, flowme::use_targets())
+```{r include=FALSE, eval=FALSE}
+example_dir <- fs::dir_create(paste0(tempdir(), "/targets_example"))
+xfun::in_dir(example_dir, flowme::use_targets())
+xfun::in_dir(example_dir, fs::dir_tree(all = TRUE))
 ```
 
-``` r
-```{r echo=FALSE, results='asis'}
-#xfun::in_dir(example_dir, fs::dir_tree(all = TRUE))
-```
+``` 
++-- .gitignore
++-- .Rbuildignore
++-- .Rprofile
++-- DESCRIPTION
++-- tar_visnetwork.yml
++-- _targets.R
++-- R
+|   \-- overrides.R
++-- report
+|   +-- .gitignore
+|   +-- chapter1.Rmd
+|   +-- chapter2.Rmd
+|   +-- index.Rmd
+|   +-- _bookdown.yml
+|   +-- _output.yml
+|   \-- _style.docx
 ```
 
 The aims are similar to those of our {drake} template (see `vignette("drakeme",

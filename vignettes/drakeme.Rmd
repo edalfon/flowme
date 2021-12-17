@@ -66,18 +66,29 @@ could be highly controversial. Yet, they work for us).
 
 Here's the file structure `flowme::drakeme()` includes in your current project:
 
-```{r include=FALSE}
-# example_dir <- fs::dir_create(paste0(tempdir(), "/drake_example"))
-# xfun::in_dir(example_dir, flowme::use_drake())
-```
-
-``` r
-```{r echo=FALSE, results='asis'}
-#xfun::in_dir(example_dir, fs::dir_tree(all = TRUE))
-```
+```{r include=FALSE, eval=FALSE}
+example_dir <- fs::dir_create(paste0(tempdir(), "/drake_example"))
+xfun::in_dir(example_dir, flowme::use_drake())
+xfun::in_dir(example_dir, fs::dir_tree(all = TRUE))
 ```
 
 
+```
++-- .gitignore
++-- .Rbuildignore
++-- DESCRIPTION
++-- R
+|   +-- 0_packages.R
+|   +-- drakeme.R
+|   +-- plan_bookme.R
+|   \-- plan_sessioninfo.R
++-- report
+|   +-- chapter1.Rmd
+|   +-- _bookdown.yml
+|   +-- _output.yml
+|   \-- _style.docx
+\-- _drake.R
+```
 
 ## Workflow notes
 
