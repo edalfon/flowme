@@ -18,17 +18,11 @@
 #' @param input_dir the main directory of the book
 #' @param input_files character vector with input files, in case you do not
 #'                    want to render them all (the default)
-#' @param output_dir character vector where to  put the rendered book
-#' @param output_format https://bookdown.org/yihui/bookdown/output-formats.html
+#' @inheritParams bookdown::render_book
 #'
 #' @return character vector with the path to the output
 #' @export
 #' @md
-#'
-#' @examples
-#' \dontrun{
-#' bookme("report")
-#' }
 bookme <- function(input_dir, input_files = "*", output_dir = NULL,
                    output_format = NULL, preview = FALSE) {
 

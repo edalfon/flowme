@@ -18,9 +18,23 @@ tar_bookdown(
 \item{input_files}{character vector with input files, in case you do not
 want to render them all (the default)}
 
-\item{output_dir}{character vector where to  put the rendered book}
+\item{output_dir}{The output directory. If \code{NULL}, a field named
+\code{output_dir} in the configuration file \file{_bookdown.yml} will be
+used (possibly not specified, either, in which case a directory name
+\file{_book} will be used).}
 
-\item{output_format}{https://bookdown.org/yihui/bookdown/output-formats.html}
+\item{output_format}{Arguments to be passed to
+\code{rmarkdown::\link{render}()}. For \code{preview_chapter()}, \code{...}
+is passed to \code{render_book()}. See \code{rmarkdown::\link{render}()}
+and \href{https://bookdown.org/yihui/bookdown/build-the-book.html}{the
+bookdown reference book} for details on how output formatting options are
+set from YAML or parameters supplied by the user when calling
+\code{render_book()}.}
+
+\item{preview}{Whether to render and preview the input files specified by the
+\code{input} argument. Previewing a certain chapter may save compilation
+time as you actively work on this chapter, but the output may not be
+accurate (e.g. cross-references to other chapters will not work).}
 }
 \value{
 a list of targets, including one target for each .Rmd file in

@@ -103,7 +103,12 @@ tar_bookdown <- function(input_dir = "report", input_files = ".",
         # which .Rmds were modified (and also triggers the report build as well
         # effectively circumventing the issue discussed above).
         preview_file <- paste0(input_dir, "/_preview")
-        write(x = rmd_file, file = preview_file, append = TRUE, sep = "\n")
+        write(
+          x = fs::path_rel(rmd_file, input_dir),
+          file = preview_file,
+          append = TRUE,
+          sep = "\n"
+        )
         rmd_file
       },
       env = list(rmd_file = .x, input_dir = input_dir)
@@ -114,27 +119,36 @@ tar_bookdown <- function(input_dir = "report", input_files = ".",
 
   report_target <- targets::tar_target_raw(
     name = input_dir,
-    command = base::substitute({
+    command = base::substitute(
+      expr = {
 
-      # Now we can access the preview files, modified by the .Rmd targets
-      preview_file <- paste0(input_dir, "/_preview")
-      rmd_to_preview <- readLines(preview_file)
-      if (isTRUE(preview)) {
-        input_files <- rmd_to_preview[rmd_to_preview != ""]
-      }
-      # but we want to keep it empty once the report is built
-      write(x = "", file = preview_file, append = FALSE)
+        # Now we can access the preview files, modified by the .Rmd targets
+        preview_file <- paste0(input_dir, "/_preview")
+        rmd_to_preview <- readLines(preview_file)
+        if (isTRUE(preview)) {
+          input_files_to_pass <- rmd_to_preview[rmd_to_preview != ""]
+        } else {
+          input_files_to_pass <- input_files
+        }
+        # and we want to keep it empty once the report is built
+        write(x = "", file = preview_file, append = FALSE)
 
-      book_files <- flowme::bookme(
-        input_dir = input_dir,
-        input_files = input_files,
-        output_dir = output_dir,
-        output_format = output_format,
-        preview = preview
-      )
+        book_files <- flowme::bookme(
+          input_dir = input_dir,
+          input_files = input_files_to_pass,
+          output_dir = output_dir,
+          output_format = output_format,
+          preview = preview
+        )
 
-      c(book_files, preview_file)
-    }),
+        c(book_files, preview_file)
+      },
+      env = list(input_dir = input_dir,
+                 input_files = input_files,
+                 output_dir = output_dir,
+                 output_format = output_format,
+                 preview = preview)
+    ),
     format = "file",
     deps = make.names(rmd_files)
   )
