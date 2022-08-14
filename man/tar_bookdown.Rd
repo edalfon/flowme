@@ -8,7 +8,8 @@ tar_bookdown(
   input_dir = "report",
   input_files = ".",
   output_dir = NULL,
-  output_format = NULL
+  output_format = NULL,
+  preview = FALSE
 )
 }
 \arguments{

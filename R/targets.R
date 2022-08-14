@@ -61,7 +61,8 @@
 #' tar_bookdown("report")
 #' }
 tar_bookdown <- function(input_dir = "report", input_files = ".",
-                         output_dir = NULL, output_format = NULL) {
+                         output_dir = NULL, output_format = NULL,
+                         preview = FALSE) {
 
   rmd_files <- fs::dir_ls(
     path = input_dir,
@@ -70,7 +71,7 @@ tar_bookdown <- function(input_dir = "report", input_files = ".",
     # TODO: recurse = TRUE # to be able to organize reports with subfolders?
   )
 
-  rmd_files_targets <- purrr::map(rmd_files, ~targets::tar_target_raw(
+  rmd_files_targets <- purrr::map(rmd_files, .f = ~targets::tar_target_raw(
     name = make.names(.x),
     command = substitute(
       expr = {
@@ -89,10 +90,23 @@ tar_bookdown <- function(input_dir = "report", input_files = ".",
         # something to the end of the file to force a change in the file's
         # hash and induce targets to build it. There must be a better way.
         # Meanwhile, this works. TODO: find a better way.
-        write(" ", rmd_file, append = TRUE)
+        #write(" ", rmd_file, append = TRUE)
+        # Now we are doing this a bit different, to also enable preview = TRUE
+        # Here's the deal. We want to target that builds the report to be aware
+        # of the .Rmd files that changed so that it can pass only those files
+        # with preview = TRUE to bookdown.
+        # We could not use {targets} fns for that. tar_outdated for example,
+        # would not work. So we are hacking our way here, by using a small file
+        # that the report depends on (see below, now it returns the book file
+        # and the preview_file), and this file will be modified when the
+        # target for an .Rmd need to run. That way we can know downstream
+        # which .Rmds were modified (and also triggers the report build as well
+        # effectively circumventing the issue discussed above).
+        preview_file <- paste0(input_dir, "/_preview")
+        write(x = rmd_file, file = preview_file, append = TRUE, sep = "\n")
         rmd_file
       },
-      env = list(rmd_file = .x)
+      env = list(rmd_file = .x, input_dir = input_dir)
     ),
     deps = tarchetypes::tar_knitr_deps(.x),
     format = "file"
@@ -101,12 +115,25 @@ tar_bookdown <- function(input_dir = "report", input_files = ".",
   report_target <- targets::tar_target_raw(
     name = input_dir,
     command = base::substitute({
-      flowme::bookme(
+
+      # Now we can access the preview files, modified by the .Rmd targets
+      preview_file <- paste0(input_dir, "/_preview")
+      rmd_to_preview <- readLines(preview_file)
+      if (isTRUE(preview)) {
+        input_files <- rmd_to_preview[rmd_to_preview != ""]
+      }
+      # but we want to keep it empty once the report is built
+      write(x = "", file = preview_file, append = FALSE)
+
+      book_files <- flowme::bookme(
         input_dir = input_dir,
         input_files = input_files,
         output_dir = output_dir,
-        output_format = output_format
+        output_format = output_format,
+        preview = preview
       )
+
+      c(book_files, preview_file)
     }),
     format = "file",
     deps = make.names(rmd_files)

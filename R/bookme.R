@@ -30,16 +30,17 @@
 #' bookme("report")
 #' }
 bookme <- function(input_dir, input_files = "*", output_dir = NULL,
-                   output_format = NULL) {
+                   output_format = NULL, preview = FALSE) {
 
   target_file <- xfun::in_dir(input_dir, {
     bookdown::render_book(
       input = input_files,
       output_format = output_format,
-      output_dir = output_dir
+      output_dir = output_dir,
+      preview = preview
   )})
 
-  #try(base::shell(target_file, wait = FALSE), silent = TRUE)
+  try(base::shell(target_file, wait = FALSE), silent = TRUE)
 
   target_file
 }

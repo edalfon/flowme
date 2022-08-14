@@ -4,7 +4,13 @@
 \alias{bookme}
 \title{Wrapper of \code{bookdown::render_book}, running it in input_dir}
 \usage{
-bookme(input_dir, input_files = "*", output_dir = NULL, output_format = NULL)
+bookme(
+  input_dir,
+  input_files = "*",
+  output_dir = NULL,
+  output_format = NULL,
+  preview = FALSE
+)
 }
 \arguments{
 \item{input_dir}{the main directory of the book}
