@@ -53,7 +53,7 @@
   <a href="reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -91,14 +91,13 @@
 <div class="page-header"><h1 id="flowme">flowme<a class="anchor" aria-label="anchor" href="#flowme"></a>
 </h1></div>
 <!-- badges: start -->
-
 <p>A little package to quickly include templates for our project structures and workflows.</p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># install.packages("remotes") # just in case</span>
-<span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"edalfon/flowme"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># install.packages("remotes") # just in case</span></span>
+<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"edalfon/flowme"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="example-setup-a-targets-project">Example: setup a {targets} project<a class="anchor" aria-label="anchor" href="#example-setup-a-targets-project"></a>
@@ -106,11 +105,11 @@
 <p>A very thin -yet fully functional- template for a <a href="https://docs.ropensci.org/targets/" class="external-link">targets</a> project.</p>
 <p>You just type:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">flowme</span><span class="fu">::</span><span class="fu"><a href="reference/targetsme.html">use_targets</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># alias flowme::targetsme()</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">flowme</span><span class="fu">::</span><span class="fu"><a href="reference/targetsme.html">use_targets</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># alias flowme::targetsme()</span></span></code></pre></div>
 <p>And get the bare bones infrastructure for a <a href="https://docs.ropensci.org/targets/" class="external-link">targets</a> project that compiles a report using <a href="https://github.com/rstudio/bookdown" class="external-link">bookdown</a>. Then you can simply run the pipeline (<code><a href="https://docs.ropensci.org/targets/reference/tar_make.html" class="external-link">targets::tar_make()</a></code>) to compile a sample report that should get you started.</p>
 <p>Here’s how the sample pipeline looks like:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">targets</span><span class="fu">::</span><span class="fu"><a href="https://docs.ropensci.org/targets/reference/tar_visnetwork.html" class="external-link">tar_visnetwork</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">targets</span><span class="fu">::</span><span class="fu"><a href="https://docs.ropensci.org/targets/reference/tar_visnetwork.html" class="external-link">tar_visnetwork</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-targets-graph.png"><!-- --></p>
 <p>See some more details in <code><a href="articles/targetsme.html">vignette("targetsme", package = "flowme")</a></code></p>
 </div>
@@ -119,7 +118,7 @@
 </h2>
 <p>Having <code>flowme</code> installed, you would only need to call</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">flowme</span><span class="fu">::</span><span class="fu"><a href="reference/drakeme.html">drakeme</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">flowme</span><span class="fu">::</span><span class="fu"><a href="reference/drakeme.html">drakeme</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>It gets you started to an empty but ready-to-fly drake project (including key dependencies).</p>
 <p>Using <code><a href="https://docs.ropensci.org/drake/reference/vis_drake_graph.html" class="external-link">drake::vis_drake_graph()</a></code> you can peek at the drake dependency graph for this boilerplate.</p>
 <p><img src="reference/figures/README-drake-graph.png"><!-- --></p>
@@ -187,7 +186,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer>
