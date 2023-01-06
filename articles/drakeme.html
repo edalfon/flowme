@@ -84,7 +84,7 @@
 
       
 
-      </header><script src="drakeme_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>drakeme</h1>
@@ -103,30 +103,63 @@
 </h2>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">flowme</span><span class="fu">::</span><span class="fu"><a href="../reference/drakeme.html">drakeme</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<p><code><a href="../reference/drakeme.html">flowme::drakeme()</a></code> includes our boilerplate code for <code>drake</code>-powered projects in your current session. It is originally based on McBain’s <a href="https://github.com/MilesMcBain/dflow" class="external-link"><code>dflow</code></a> and it is tailored to our report-generating projects.</p>
+<p><code><a href="../reference/drakeme.html">flowme::drakeme()</a></code> includes our boilerplate code for
+<code>drake</code>-powered projects in your current session. It is
+originally based on McBain’s <a href="https://github.com/MilesMcBain/dflow" class="external-link"><code>dflow</code></a> and
+it is tailored to our report-generating projects.</p>
 <div class="section level3">
 <h3 id="aims-of-this-boilerplate">Aims of this boilerplate<a class="anchor" aria-label="anchor" href="#aims-of-this-boilerplate"></a>
 </h3>
 <p>We put together this template, mainly, to:</p>
 <ul>
 <li>
-<strong>A1</strong>: Make it easy to jump into a drake workflow. In particular, for those used to the analysis as R package approach.</li>
+<strong>A1</strong>: Make it easy to jump into a drake workflow. In
+particular, for those used to the analysis as R package approach.</li>
 <li>
-<strong>A2</strong>: Make it easy and one-sight-clear what the project is all about. In particular, for a new person collaborating or overtaking the project (which, of course, may well be future you).</li>
+<strong>A2</strong>: Make it easy and one-sight-clear what the
+project is all about. In particular, for a new person collaborating or
+overtaking the project (which, of course, may well be future you).</li>
 <li>
-<strong>A3</strong>: Cover the most common use case we have, which is a data analysis project that ends up in a somewhat beefy report (as opposed to, for example, a ML project that ends up putting a model up in “production”).</li>
+<strong>A3</strong>: Cover the most common use case we have, which
+is a data analysis project that ends up in a somewhat beefy report (as
+opposed to, for example, a ML project that ends up putting a model up in
+“production”).</li>
 </ul>
 </div>
 <div class="section level3">
 <h3 id="features-to-achieve-those-aims">Features to achieve those aims<a class="anchor" aria-label="anchor" href="#features-to-achieve-those-aims"></a>
 </h3>
-<p>These are the key features to achieve those aims (admittedly, some could be highly controversial. Yet, they work for us).</p>
+<p>These are the key features to achieve those aims (admittedly, some
+could be highly controversial. Yet, they work for us).</p>
 <ul>
-<li><p><strong>Fully functional <code>drake</code> project at the push of a button</strong>: once installed, <code>flowme</code> helps you setup a drake project with one-function call (<code><a href="../reference/drakeme.html">flowme::drakeme()</a></code>), including all required packages. It will get you started with a “hello world” project that you can actually run (<code><a href="https://docs.ropensci.org/drake/reference/r_make.html" class="external-link">drake::r_make()</a></code>) and see the output. <strong>A1</strong></p></li>
-<li><p><strong><code>devtools::load_all()</code> friendly</strong>: <code><a href="../reference/drakeme.html">flowme::drakeme()</a></code> makes sure your project has a DESCRIPTION file, and if you have <code>devtools</code> installed, <code>devtools::load_all()</code> would just work (you may need to restart RStudio for the keyboard shortcut to work). By placing <code>0_packages.R</code> within R directory, packages will also be loaded/attached.</p></li>
-<li><p><strong>A <code>bookdown</code>-based report/book in the flow</strong>: <code><a href="../reference/drakeme.html">flowme::drakeme()</a></code> sets the stage for the project to produce a report with <code>bookdown</code>. You simply add <code>Rmd</code> files to the “report” folder and you are good to go. This is achieved by including a target at the end of the plan to render all <code>Rmd</code> files in the <code>report</code> directory into a single book. Thus, you do not have to include one target for each <code>Rmd</code>, but rather just work on your <code>Rmd</code> and put them all in the <code>report</code> directory. Take a look at <code>plan_bookme()</code> and <code><a href="../reference/bookme.html">bookme()</a></code> to see how this is done.</p></li>
+<li><p><strong>Fully functional <code>drake</code> project at the push
+of a button</strong>: once installed, <code>flowme</code> helps you
+setup a drake project with one-function call
+(<code><a href="../reference/drakeme.html">flowme::drakeme()</a></code>), including all required packages. It
+will get you started with a “hello world” project that you can actually
+run (<code><a href="https://docs.ropensci.org/drake/reference/r_make.html" class="external-link">drake::r_make()</a></code>) and see the output.
+<strong>A1</strong></p></li>
+<li><p><strong><code>devtools::load_all()</code> friendly</strong>:
+<code><a href="../reference/drakeme.html">flowme::drakeme()</a></code> makes sure your project has a DESCRIPTION
+file, and if you have <code>devtools</code> installed,
+<code>devtools::load_all()</code> would just work (you may need to
+restart RStudio for the keyboard shortcut to work). By placing
+<code>0_packages.R</code> within R directory, packages will also be
+loaded/attached.</p></li>
+<li><p><strong>A <code>bookdown</code>-based report/book in the
+flow</strong>: <code><a href="../reference/drakeme.html">flowme::drakeme()</a></code> sets the stage for the
+project to produce a report with <code>bookdown</code>. You simply add
+<code>Rmd</code> files to the “report” folder and you are good to go.
+This is achieved by including a target at the end of the plan to render
+all <code>Rmd</code> files in the <code>report</code> directory into a
+single book. Thus, you do not have to include one target for each
+<code>Rmd</code>, but rather just work on your <code>Rmd</code> and put
+them all in the <code>report</code> directory. Take a look at
+<code>plan_bookme()</code> and <code><a href="../reference/bookme.html">bookme()</a></code> to see how this is
+done.</p></li>
 </ul>
-<p>Here’s the file structure <code><a href="../reference/drakeme.html">flowme::drakeme()</a></code> includes in your current project:</p>
+<p>Here’s the file structure <code><a href="../reference/drakeme.html">flowme::drakeme()</a></code> includes in
+your current project:</p>
 <pre><code>+-- .gitignore
 +-- .Rbuildignore
 +-- DESCRIPTION
@@ -147,7 +180,13 @@
 </h3>
 <ul>
 <li>
-<p>The big picture plan (<code>the_plan</code>) should be defined in <code>_drake.R</code>, by binding together sub-plans. So no details on the processing here (unless it is a really simple project, in which case you probably do not need <code>drake</code> anyway, so, please just don’t). Hence, the plan should look something like the example below, which makes it easy for a newcomer to quickly know what the project is all about.</p>
+<p>The big picture plan (<code>the_plan</code>) should be defined in
+<code>_drake.R</code>, by binding together sub-plans. So no details on
+the processing here (unless it is a really simple project, in which case
+you probably do not need <code>drake</code> anyway, so, please just
+don’t). Hence, the plan should look something like the example below,
+which makes it easy for a newcomer to quickly know what the project is
+all about.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">the_plan</span> <span class="op">&lt;-</span> <span class="fu">drake</span><span class="fu">::</span><span class="fu"><a href="https://docs.ropensci.org/drake/reference/bind_plans.html" class="external-link">bind_plans</a></span><span class="op">(</span></span>
 <span></span>
@@ -157,8 +196,14 @@
 <span>  <span class="fu">plan_bookme</span><span class="op">(</span><span class="op">)</span> <span class="co"># Just render the report using bookdown</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 </li>
-<li><p>Define sub-plans within functions that return a <code><a href="https://docs.ropensci.org/drake/reference/drake_plan.html" class="external-link">drake::drake_plan</a></code>. Defining the plans within functions instead of directly as objects helps navigating the project. You look at the plan, put the cursor on the sub-plan you want to go to and hit F2.</p></li>
-<li><p>Include <code>Rmd</code> in the <code>report</code> directory, using the targets in the plans by calling <code><a href="https://docs.ropensci.org/drake/reference/readd.html" class="external-link">drake::loadd</a></code> or <code><a href="https://docs.ropensci.org/drake/reference/readd.html" class="external-link">drake::readd</a></code></p></li>
+<li><p>Define sub-plans within functions that return a
+<code><a href="https://docs.ropensci.org/drake/reference/drake_plan.html" class="external-link">drake::drake_plan</a></code>. Defining the plans within functions
+instead of directly as objects helps navigating the project. You look at
+the plan, put the cursor on the sub-plan you want to go to and hit
+F2.</p></li>
+<li><p>Include <code>Rmd</code> in the <code>report</code> directory,
+using the targets in the plans by calling <code><a href="https://docs.ropensci.org/drake/reference/readd.html" class="external-link">drake::loadd</a></code> or
+<code><a href="https://docs.ropensci.org/drake/reference/readd.html" class="external-link">drake::readd</a></code></p></li>
 </ul>
 </div>
 </div>

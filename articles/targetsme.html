@@ -84,7 +84,7 @@
 
       
 
-      </header><script src="targetsme_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>targetsme</h1>
@@ -100,7 +100,10 @@
 <div class="section level2">
 <h2 id="we-are-transitioning-to-targets">We are transitioning to {targets} …<a class="anchor" aria-label="anchor" href="#we-are-transitioning-to-targets"></a>
 </h2>
-<p>So, we now include a bare-bones {targets} project template that you can use using <code><a href="../reference/targetsme.html">flowme::targetsme()</a></code> or <code><a href="../reference/targetsme.html">flowme::use_targets()</a></code>, which includes the following files in your current project:</p>
+<p>So, we now include a bare-bones {targets} project template that you
+can use using <code><a href="../reference/targetsme.html">flowme::targetsme()</a></code> or
+<code><a href="../reference/targetsme.html">flowme::use_targets()</a></code>, which includes the following files
+in your current project:</p>
 <pre><code>+-- .gitignore
 +-- .Rbuildignore
 +-- .Rprofile
@@ -117,12 +120,27 @@
 |   +-- _bookdown.yml
 |   +-- _output.yml
 |   \-- _style.docx</code></pre>
-<p>The aims are similar to those of our {drake} template (see <code><a href="../articles/drakeme.html">vignette("drakeme", package = "flowme")</a></code>). But currently our {targets} template is very thin. It only includes:</p>
+<p>The aims are similar to those of our {drake} template (see
+<code><a href="../articles/drakeme.html">vignette("drakeme", package = "flowme")</a></code>). But currently our
+{targets} template is very thin. It only includes:</p>
 <ul>
-<li><p>Fully functional <a href="https://docs.ropensci.org/targets/" class="external-link">targets</a> project at the push of a button: once installed, <code>flowme</code> helps you setup a project (<code><a href="../reference/targetsme.html">flowme::targetsme()</a></code>) that you can actually run (<code><a href="https://docs.ropensci.org/targets/reference/tar_make.html" class="external-link">targets::tar_make()</a></code>) and see the output.</p></li>
-<li><p>Prepares the environment in <code>.Rprofile</code> and leaves <code>_targets.R</code> script only to define your pipeline. (we are not convinced yet on this approach, but let’s see how it goes)</p></li>
-<li><p>Includes a <code>bookdown</code>-based report/book in the pipeline, now using a target factory in <code><a href="../reference/tar_bookdown.html">flowme::tar_bookdown()</a></code>. Again, you simply add <code>Rmd</code> files to the “report” folder and you are good to go.</p></li>
-<li><p>Again, the big picture plan should be defined in <code>_targets.R</code>, by binding together sub-plans. Here we still prefer drake-like syntax and therefore we will use <code><a href="https://docs.ropensci.org/tarchetypes/reference/tar_plan.html" class="external-link">tarchetypes::tar_plan</a></code> within functions to help navigating the project.</p></li>
+<li><p>Fully functional <a href="https://docs.ropensci.org/targets/" class="external-link">targets</a> project at the push of a
+button: once installed, <code>flowme</code> helps you setup a project
+(<code><a href="../reference/targetsme.html">flowme::targetsme()</a></code>) that you can actually run
+(<code><a href="https://docs.ropensci.org/targets/reference/tar_make.html" class="external-link">targets::tar_make()</a></code>) and see the output.</p></li>
+<li><p>Prepares the environment in <code>.Rprofile</code> and leaves
+<code>_targets.R</code> script only to define your pipeline. (we are not
+convinced yet on this approach, but let’s see how it goes)</p></li>
+<li><p>Includes a <code>bookdown</code>-based report/book in the
+pipeline, now using a target factory in
+<code><a href="../reference/tar_bookdown.html">flowme::tar_bookdown()</a></code>. Again, you simply add
+<code>Rmd</code> files to the “report” folder and you are good to
+go.</p></li>
+<li><p>Again, the big picture plan should be defined in
+<code>_targets.R</code>, by binding together sub-plans. Here we still
+prefer drake-like syntax and therefore we will use
+<code><a href="https://docs.ropensci.org/tarchetypes/reference/tar_plan.html" class="external-link">tarchetypes::tar_plan</a></code> within functions to help navigating
+the project.</p></li>
 </ul>
 </div>
   </div>
