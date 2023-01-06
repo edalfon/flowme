@@ -103,6 +103,7 @@ tar_bookdown <- function(input_dir = "report", input_files = ".",
         # which .Rmds were modified (and also triggers the report build as well
         # effectively circumventing the issue discussed above).
         preview_file <- paste0(input_dir, "/_preview")
+        fs::file_create(preview_file) # can happen it does not exist
         write(
           x = fs::path_rel(rmd_file, input_dir),
           file = preview_file,
@@ -124,6 +125,7 @@ tar_bookdown <- function(input_dir = "report", input_files = ".",
 
         # Now we can access the preview files, modified by the .Rmd targets
         preview_file <- paste0(input_dir, "/_preview")
+        fs::file_create(preview_file) # can happen it does not exist
         rmd_to_preview <- readLines(preview_file)
         if (isTRUE(preview)) {
           input_files_to_pass <- rmd_to_preview[rmd_to_preview != ""]
