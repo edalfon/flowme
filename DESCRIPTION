@@ -1,6 +1,6 @@
 Package: flowme
 Title: Add boilerplate code to your project for some specific workflows
-Version: 0.2.0
+Version: 0.2.1
 Authors@R: 
     person(given = "Eduardo",
            family = "Alfonso-Sierra",
@@ -14,7 +14,7 @@ Encoding: UTF-8
 Language: en-US
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.2
+RoxygenNote: 7.2.2
 Imports: 
     magrittr,
     usethis,

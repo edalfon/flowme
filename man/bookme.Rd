@@ -23,14 +23,6 @@ want to render them all (the default)}
 used (possibly not specified, either, in which case a directory name
 \file{_book} will be used).}
 
-\item{output_format}{Arguments to be passed to
-\code{rmarkdown::\link{render}()}. For \code{preview_chapter()}, \code{...}
-is passed to \code{render_book()}. See \code{rmarkdown::\link{render}()}
-and \href{https://bookdown.org/yihui/bookdown/build-the-book.html}{the
-bookdown reference book} for details on how output formatting options are
-set from YAML or parameters supplied by the user when calling
-\code{render_book()}.}
-
 \item{preview}{Whether to render and preview the input files specified by the
 \code{input} argument. Previewing a certain chapter may save compilation
 time as you actively work on this chapter, but the output may not be

@@ -23,6 +23,11 @@
 #' @return character vector with the path to the output
 #' @export
 #' @md
+#'
+#' @examples
+#' \dontrun{
+#' bookme("report")
+#' }
 bookme <- function(input_dir, input_files = "*", output_dir = NULL,
                    output_format = NULL, preview = FALSE) {
 
