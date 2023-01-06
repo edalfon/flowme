@@ -18,6 +18,7 @@
 #' @param input_dir the main directory of the book
 #' @param input_files character vector with input files, in case you do not
 #'                    want to render them all (the default)
+#' @param output_format as in bookdown::render_book
 #' @inheritParams bookdown::render_book
 #'
 #' @return character vector with the path to the output
