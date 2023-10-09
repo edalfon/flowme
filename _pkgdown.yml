@@ -16,7 +16,6 @@ reference:
   - use_targets_description
   - use_targets_gitignore
   - use_targets_templates
-  - tar_targetize_rmd
 
 - title: "DuckDB targets"
   desc: >
