@@ -28,13 +28,22 @@
     <loc>https://edalfon.github.io/flowme/index.html</loc>
   </url>
   <url>
+    <loc>https://edalfon.github.io/flowme/reference/attach_db.html</loc>
+  </url>
+  <url>
     <loc>https://edalfon.github.io/flowme/reference/bookme.html</loc>
   </url>
   <url>
     <loc>https://edalfon.github.io/flowme/reference/drakeme.html</loc>
   </url>
   <url>
+    <loc>https://edalfon.github.io/flowme/reference/duck_tar_format.html</loc>
+  </url>
+  <url>
     <loc>https://edalfon.github.io/flowme/reference/flowme-package.html</loc>
+  </url>
+  <url>
+    <loc>https://edalfon.github.io/flowme/reference/get_search_path.html</loc>
   </url>
   <url>
     <loc>https://edalfon.github.io/flowme/reference/index.html</loc>
@@ -43,7 +52,13 @@
     <loc>https://edalfon.github.io/flowme/reference/pipe.html</loc>
   </url>
   <url>
+    <loc>https://edalfon.github.io/flowme/reference/set_search_path.html</loc>
+  </url>
+  <url>
     <loc>https://edalfon.github.io/flowme/reference/tar_bookdown.html</loc>
+  </url>
+  <url>
+    <loc>https://edalfon.github.io/flowme/reference/tar_duck_r.html</loc>
   </url>
   <url>
     <loc>https://edalfon.github.io/flowme/reference/tar_make_job.html</loc>
@@ -53,6 +68,9 @@
   </url>
   <url>
     <loc>https://edalfon.github.io/flowme/reference/targetsme.html</loc>
+  </url>
+  <url>
+    <loc>https://edalfon.github.io/flowme/reference/update_search_path.html</loc>
   </url>
   <url>
     <loc>https://edalfon.github.io/flowme/reference/use_drake_description.html</loc>
