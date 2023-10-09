@@ -2,3 +2,48 @@ url: https://edalfon.github.io/flowme/
 template:
   params:
     ganalytics: G-89TJ57C5XP
+
+reference:
+
+- title: "{targets}-based workflow"
+  desc: >
+    Functions to support a {targets}-based workflow
+- contents:
+  - targetsme
+  - use_targets
+  - tar_make_job
+  - tar_visnetwork_custom
+  - use_targets_description
+  - use_targets_gitignore
+  - use_targets_templates
+  - tar_targetize_rmd
+
+- title: "DuckDB targets"
+  desc: >
+    Target factory to wrangle data using DuckDB
+- contents:
+  - tar_duck_r
+  - tar_duck_rmd
+  - duck_tar_format
+  - attach_db
+  - get_search_path
+  - set_search_path
+  - update_search_path
+
+- title: "{bookdown} targets"
+  desc: >
+    Target factory to cuild bookdown reports
+- contents:
+  - tar_bookdown
+  - bookme
+
+- title: "OLD Drake-based workflow"
+  desc: >
+    Fns to support a drake-based workflow
+- contents:
+  - drakeme
+  - use_drake_description
+  - use_drake_gitignore
+  - use_drake_templates
+
+

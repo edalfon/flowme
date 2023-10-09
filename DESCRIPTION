@@ -14,7 +14,7 @@ Encoding: UTF-8
 Language: en-US
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.2
+RoxygenNote: 7.2.3
 Imports: 
     magrittr,
     usethis,
@@ -25,6 +25,15 @@ Imports:
     purrr,
     yaml,
     rstudioapi,
+    targets,
+    DBI,
+    dbplyr,
+    dplyr,
+    duckdb,
+    parsermd,
+    rlang,
+    stringr,
+    tictoc,
     job
 Suggests: 
     testthat (>= 3.0.0),
@@ -33,7 +42,6 @@ Suggests:
     rmarkdown,
     xfun,
     tarchetypes,
-    targets,
     drake,
     here,
     covr
