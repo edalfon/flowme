@@ -306,6 +306,7 @@ duck_tar_format <- targets::tar_format(
         envir = .GlobalEnv,
         inherits = TRUE # recycle
       )
+
       # Whenever you open a connection, you usually should prepare to close it
       # (e.g. via on.exit() or whatever). Yet, here we DO NOT WANT TO CLOSE IT
       # because, on.exit(), would close it when it finished loading the target
@@ -319,7 +320,10 @@ duck_tar_format <- targets::tar_format(
       #   tictoc::toc()
       # })
 
-      #DBI::dbExecute(conn_obj, "SET search_path = 'memory';")
+      # we want this here to allow keeping a write-enabled
+      # connection to memory, while attaching other databases
+      # below in read-only mode.
+      flowme::set_search_path(conn_obj, "memory")
     }
 
     # At this point we have ensured there is a valid connection (conn_obj) to
@@ -331,7 +335,6 @@ duck_tar_format <- targets::tar_format(
     # modify it (i.e. do not write to that duckdb file. That should only happen
     # when you are building the target, so, only in the tar_duck_* command)
     flowme::attach_db(conn_obj, duckdb_path, read_only = TRUE)
-    #flowme::update_search_path(conn_obj, append = target_name)
 
     # the most common use case, is to have a target that creates a table in the
     # database using the target name. So let's just check if a table with that
