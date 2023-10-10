@@ -168,7 +168,7 @@
 #'   # the `tar_duck_r` targets above. Go check that.
 #'   # See the testthat files for examples of `tar_duck_rmd`
 tar_duck_r <- function(target_name,
-                       command,
+                       command = NULL,
                        duckdb_path = paste0(
                          "./duckdb/",
                          targets::tar_deparse_language(substitute(target_name))
