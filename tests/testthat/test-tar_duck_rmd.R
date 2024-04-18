@@ -1,5 +1,4 @@
 targets::tar_test("tar_duck_rmd works", {
-
   fs::dir_create("sql")
   firms_lines <- "
 ---
@@ -112,12 +111,10 @@ GROUP BY firms.name
   writeLines(totals_lines, "sql/totals.Rmd")
 
   targets::tar_script({
-
     list(
       flowme::tar_duck_rmd("sql/firms.Rmd"),
       flowme::tar_duck_rmd("sql/revenue.Rmd"),
       flowme::tar_duck_rmd("sql/totals.Rmd"),
-
       NULL
     )
   })
@@ -142,9 +139,9 @@ GROUP BY firms.name
 
   duck_file <- "./duckdb/firms"
   duck_con <- DBI::dbConnect(duckdb::duckdb(duck_file, read_only = TRUE))
-  duck_data <- DBI::dbGetQuery(duck_con, "SELECT * FROM firms;")
+  duck_data <- DBI::dbGetQuery(duck_con, "SELECT * FROM firms ORDER BY code;")
   DBI::dbDisconnect(duck_con, shutdown = TRUE)
-  #testthat::expect_known_hash(duck_data, "a3342f4eb3")
+  # testthat::expect_known_hash(duck_data, "a3342f4eb3")
   testthat::expect_equal(duck_data, structure(
     list(
       code = 1:5,
@@ -156,14 +153,16 @@ GROUP BY firms.name
 
   duck_file <- "./duckdb/revenue"
   duck_con <- DBI::dbConnect(duckdb::duckdb(duck_file, read_only = TRUE))
-  duck_data <- DBI::dbGetQuery(duck_con, "SELECT * FROM revenue;")
+  duck_data <- DBI::dbGetQuery(duck_con, "SELECT * FROM revenue ORDER BY year, code;")
   DBI::dbDisconnect(duck_con, shutdown = TRUE)
-  #testthat::expect_known_hash(duck_data, "564be8150b")
+  # testthat::expect_known_hash(duck_data, "564be8150b")
   testthat::expect_equal(duck_data, structure(
     list(
       code = c(1L, 2L, 3L, 4L, 5L, 1L, 2L, 3L, 4L, 5L),
-      year = c(2021L, 2021L, 2021L, 2021L, 2021L, 2022L, 2022L,
-               2022L, 2022L, 2022L),
+      year = c(
+        2021L, 2021L, 2021L, 2021L, 2021L, 2022L, 2022L,
+        2022L, 2022L, 2022L
+      ),
       value = c(2L, 6L, 4L, 8L, 9L, 1L, 2L, 3L, 4L, 5L)
     ),
     class = "data.frame",
@@ -172,9 +171,9 @@ GROUP BY firms.name
 
   duck_file <- "./duckdb/totals"
   duck_con <- DBI::dbConnect(duckdb::duckdb(duck_file, read_only = TRUE))
-  duck_data <- DBI::dbGetQuery(duck_con, "SELECT * FROM totals;")
+  duck_data <- DBI::dbGetQuery(duck_con, "SELECT * FROM totals ORDER BY name;")
   DBI::dbDisconnect(duck_con, shutdown = TRUE)
-  #testthat::expect_known_hash(duck_data, "715c4129e8")
+  # testthat::expect_known_hash(duck_data, "715c4129e8")
   testthat::expect_equal(duck_data, structure(
     list(
       name = c("BMW", "DAIMLER", "FORD", "NISSAN", "RENAULT"),
@@ -183,6 +182,4 @@ GROUP BY firms.name
     class = "data.frame",
     row.names = c(NA, -5L)
   ))
-
 })
-
