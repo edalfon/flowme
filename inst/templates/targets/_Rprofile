@@ -1,27 +1,13 @@
+options(conflicts.policy = "strict")
 if (file.exists("~/.Rprofile")) source("~/.Rprofile")
 
-# we are putting all env setup now in a project-level .Rprofile
-# not convinced about this approach, but let's see how it goes
-# don't like that it is not explicitly linked in _targets.R, but ...
-
-if(!requireNamespace("pacman", quietly = TRUE)) {
-  utils::install.packages("pacman")
-}
-
-pacman::p_load(
-  magrittr,
-  dplyr,
-  tidyr,
-  ggplot2,
-
-  targets,
-  tarchetypes
-)
-
-library(conflicted)
-conflicted::conflict_prefer("filter", "dplyr", quiet = TRUE)
-conflicted::conflict_prefer("select", "dplyr", quiet = TRUE)
-conflicted::conflict_prefer("expand", "tidyr", quiet = TRUE)
+library(stats) # package 'stats' in options("defaultPackages") was not found
+library(utils)
+library(dplyr, mask.ok = c("filter", "lag", "intersect", "setdiff", "setequal", "union"))
+library(tidyr)
+library(ggplot2)
+library(targets)
+library(tarchetypes)
 
 # make all fns available to {targets} (and interactively, via load_all)
 if (rlang::is_interactive()) {
