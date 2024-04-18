@@ -1,11 +1,11 @@
-pandoc: 2.19.2
-pkgdown: 2.0.7
+pandoc: 3.1.11
+pkgdown: 2.0.8
 pkgdown_sha: ~
 articles:
   drakeme: drakeme.html
   flowme: flowme.html
   targetsme: targetsme.html
-last_built: 2023-10-10T07:39Z
+last_built: 2024-04-18T04:22Z
 urls:
   reference: https://edalfon.github.io/flowme/reference
   article: https://edalfon.github.io/flowme/articles
