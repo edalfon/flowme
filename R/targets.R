@@ -9,7 +9,6 @@
 #' @export
 #' @md
 targetsme <- function(install_deps = TRUE) {
-
   usethis::proj_set(".", force = TRUE)
 
   use_targets_templates()
@@ -31,7 +30,6 @@ use_targets <- targetsme
 #' @export
 #' @md
 use_targets_templates <- function() {
-
   # targets file ####
   usethis::use_template(
     template = "targets/_targets.R", save_as = "_targets.R",
@@ -43,7 +41,11 @@ use_targets_templates <- function() {
   )
   usethis::use_template(
     template = "targets/tar_visnetwork.yml", save_as = "tar_visnetwork.yml",
-    ignore = TRUE, open = TRUE, package = "flowme"
+    ignore = TRUE, open = FALSE, package = "flowme"
+  )
+  usethis::use_template(
+    template = "targets/_radian_profile", save_as = ".radian_profile",
+    ignore = TRUE, open = FALSE, package = "flowme"
   )
 
   # R files ####
@@ -91,7 +93,6 @@ use_targets_templates <- function() {
 #' @export
 #' @md
 use_targets_gitignore <- function() {
-
   usethis::use_git_ignore("_targets")
   usethis::use_git_ignore("*.html", "report")
   usethis::use_git_ignore("*.docx", "report")
@@ -107,7 +108,6 @@ use_targets_gitignore <- function() {
 #' @export
 #' @md
 use_targets_description <- function(install_deps = TRUE) {
-
   usethis::use_description(check_name = FALSE)
   desc::desc_set_dep("targets")
   desc::desc_set_dep("tarchetypes")
@@ -125,14 +125,15 @@ use_targets_description <- function(install_deps = TRUE) {
 #'
 #' @export
 #' @md
-tar_make_job <- function () {
-
+tar_make_job <- function() {
   rstudioapi::documentSaveAll()
 
   if (file.exists("pre_tar_make.R")) source("pre_tar_make.R")
 
   job::job(
-    {targets::tar_make()},
+    {
+      targets::tar_make()
+    },
     import = NULL,
     packages = NULL,
     title = "{targets} pipeline"
@@ -143,7 +144,7 @@ tar_make_job <- function () {
 #'
 #' @export
 #' @md
-tar_visnetwork_custom <- function () {
+tar_visnetwork_custom <- function() {
   rstudioapi::documentSaveAll()
 
   if (file.exists("tar_visnetwork.yml")) {
@@ -166,4 +167,3 @@ tar_visnetwork_custom <- function () {
 
   custom_visnetwork
 }
-

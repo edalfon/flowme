@@ -1,0 +1,8 @@
+# to try and deal with the weird parenthesis added
+# https://github.com/REditorSupport/vscode-R/issues/419
+options(radian.auto_match = FALSE)
+
+# to get rid of empty rows below the command lie
+# https://github.com/randy3k/radian/issues/135
+options(radian.complete_while_typing = FALSE)
+
