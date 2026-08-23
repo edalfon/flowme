@@ -1,3 +1,8 @@
+# flowme 0.5.2
+
+* fix bug introduced by removing imports.
+* tar_duck_r() example calls targets::tar_script() directly, which writes _targets.R into the current working directory — during R CMD check that's the check directory itself, and it was never cleaned up. It's unrelated to the _targets.R template under inst/templates/, which is why you couldn't find it in the repo. Fixed by wrapping the example in targets::tar_dir() — a helper targets ships specifically for this ("Not a user-side function. Just for CRAN.") that runs code in a temp directory and cleans up after.
+
 # flowme 0.5.1
 
 * add `tar_fn()` to the `overrides.R` template: a small convenience for those who like to write
