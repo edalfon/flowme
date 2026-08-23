@@ -266,6 +266,7 @@ tar_duck_r <- function(target_name,
 #' in the target the info that allows us to create the connection. The read
 #' function would do the heavy-lifting.
 #' @importFrom dplyr tbl
+#' @importFrom dbplyr sql
 #' @export
 duck_tar_format <- targets::tar_format(
   read = function(path) {
@@ -343,6 +344,11 @@ duck_tar_format <- targets::tar_format(
     # return null, and anyway the side effect we were looking for is already in
     # place (a connection with the db attache to it)
     if (DBI::dbExistsTable(conn_obj, target_name)) {
+      # dplyr::tbl() on a DBI connection dispatches through dbplyr, so
+      # dbplyr must be installed even though we never call dbplyr:: ourselves
+      if (!requireNamespace("dbplyr", quietly = TRUE)) {
+        stop("Package \"dbplyr\" is required to read a tar_duck_r()/tar_duck_rmd() target.")
+      }
       dplyr::tbl(conn_obj, target_name)
     } else {
       NULL

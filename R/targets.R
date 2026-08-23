@@ -176,6 +176,12 @@ tar_make_job <- function() {
 tar_visnetwork_custom <- function() {
   rstudioapi::documentSaveAll()
 
+  # targets::tar_visnetwork() renders a visNetwork htmlwidget, so visNetwork
+  # must be installed even though we never call visNetwork:: ourselves
+  if (!requireNamespace("visNetwork", quietly = TRUE)) {
+    stop("Package \"visNetwork\" is required for tar_visnetwork_custom().")
+  }
+
   if (file.exists("tar_visnetwork.yml")) {
     custom_params <- yaml::read_yaml("tar_visnetwork.yml")
     if (is.null(custom_params)) custom_params <- list()
