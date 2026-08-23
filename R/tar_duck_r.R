@@ -265,6 +265,7 @@ tar_duck_r <- function(target_name,
 #' A custom format. The write function is standard, as we only want to store
 #' in the target the info that allows us to create the connection. The read
 #' function would do the heavy-lifting.
+#' @importFrom dplyr tbl
 #' @export
 duck_tar_format <- targets::tar_format(
   read = function(path) {

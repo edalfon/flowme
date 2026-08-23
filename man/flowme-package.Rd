@@ -20,5 +20,10 @@ Useful links:
 \author{
 \strong{Maintainer}: Eduardo Alfonso-Sierra \email{edalfon@gmail.com} (\href{https://orcid.org/0000-0001-6430-5135}{ORCID}) [copyright holder]
 
+Authors:
+\itemize{
+  \item Eduardo Alfonso-Sierra \email{edalfon@gmail.com} (\href{https://orcid.org/0000-0001-6430-5135}{ORCID}) [copyright holder]
+}
+
 }
 \keyword{internal}
