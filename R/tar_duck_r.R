@@ -112,6 +112,7 @@
 #' @md
 #'
 #' @examples
+#'   targets::tar_dir({ # Runs code from inside a temporary directory.
 #'   targets::tar_script({
 #'
 #'     suppressMessages(library(dplyr))
@@ -167,6 +168,7 @@
 #'   # After running tar_make() you will find a duckdb file for each of
 #'   # the `tar_duck_r` targets above. Go check that.
 #'   # See the testthat files for examples of `tar_duck_rmd`
+#'   })
 tar_duck_r <- function(target_name,
                        command = NULL,
                        duckdb_path = paste0(
