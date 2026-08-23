@@ -34,9 +34,13 @@ tar_duck_rmd <- function(sql_rmd,
   # detection mechanism and effectively loading them (which triggers the custom
   # read method of the custom format)
   sql_rmd_ast <- parsermd::parse_rmd(sql_rmd_txt)
+  load_targets_chunks <- parsermd::rmd_select(
+    sql_rmd_ast, parsermd::has_label("load-targets")
+  ) |>
+    parsermd::as_tibble()
   tar_loads <-
-    parsermd::rmd_select(sql_rmd_ast, parsermd::has_label("load-targets")) |>
-    purrr::map(~.x$code) |>
+    load_targets_chunks$ast[load_targets_chunks$type == "rmd_chunk"] |>
+    purrr::map(parsermd::rmd_node_code) |>
     purrr::list_c() |>
     stringr::str_trim() |>
     # TODO: handle here edge cases, like commented lines and others
