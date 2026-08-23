@@ -21,7 +21,6 @@ targetsme <- function(install_deps = TRUE) {
 use_targets <- targetsme
 
 
-
 #' Copy `targets` templates to the current project
 #'
 #' TODO: let the user customize the "report" folder
@@ -32,38 +31,59 @@ use_targets <- targetsme
 use_targets_templates <- function() {
   # targets file ####
   usethis::use_template(
-    template = "targets/_targets.R", save_as = "_targets.R",
-    ignore = TRUE, open = TRUE, package = "flowme"
+    template = "targets/_targets.R",
+    save_as = "_targets.R",
+    ignore = TRUE,
+    open = TRUE,
+    package = "flowme"
   )
   usethis::use_template(
-    template = "targets/_Rprofile", save_as = ".Rprofile",
-    ignore = TRUE, open = TRUE, package = "flowme"
+    template = "targets/_Rprofile",
+    save_as = ".Rprofile",
+    ignore = TRUE,
+    open = TRUE,
+    package = "flowme"
   )
   usethis::use_template(
-    template = "targets/tar_visnetwork.yml", save_as = "tar_visnetwork.yml",
-    ignore = TRUE, open = FALSE, package = "flowme"
+    template = "targets/tar_visnetwork.yml",
+    save_as = "tar_visnetwork.yml",
+    ignore = TRUE,
+    open = FALSE,
+    package = "flowme"
   )
   usethis::use_template(
-    template = "targets/_radian_profile", save_as = ".radian_profile",
-    ignore = TRUE, open = FALSE, package = "flowme"
+    template = "targets/_radian_profile",
+    save_as = ".radian_profile",
+    ignore = TRUE,
+    open = FALSE,
+    package = "flowme"
   )
 
   # R files ####
   fs::dir_create("R")
   usethis::use_template(
-    template = "targets/R/overrides.R", save_as = "R/overrides.R",
-    ignore = FALSE, open = TRUE, package = "flowme"
+    template = "targets/R/overrides.R",
+    save_as = "R/overrides.R",
+    ignore = FALSE,
+    open = TRUE,
+    package = "flowme"
   )
 
   # report files ####
   usethis::use_directory("report", ignore = TRUE)
   usethis::use_template(
-    template = "targets/report/_bookdown.yml", save_as = "report/_bookdown.yml",
-    ignore = TRUE, open = FALSE, package = "flowme"
+    template = "targets/report/_bookdown.yml",
+    save_as = "report/_bookdown.yml",
+    ignore = TRUE,
+    open = FALSE,
+    package = "flowme"
   )
   usethis::use_template(
-    template = "targets/report/_output.yml", save_as = "report/_output.yml",
-    ignore = TRUE, open = FALSE, package = "flowme"
+    template = "targets/report/_output.yml",
+    save_as = "report/_output.yml",
+    ignore = TRUE,
+    open = FALSE,
+    package = "flowme"
   )
 
   # Done differently because usethis::use_template does not handle well weird
@@ -74,16 +94,25 @@ use_targets_templates <- function() {
   )
 
   usethis::use_template(
-    template = "targets/report/index.Rmd", save_as = "report/index.Rmd",
-    ignore = TRUE, open = TRUE, package = "flowme"
+    template = "targets/report/index.Rmd",
+    save_as = "report/index.Rmd",
+    ignore = TRUE,
+    open = TRUE,
+    package = "flowme"
   )
   usethis::use_template(
-    template = "targets/report/chapter1.Rmd", save_as = "report/chapter1.Rmd",
-    ignore = TRUE, open = TRUE, package = "flowme"
+    template = "targets/report/chapter1.Rmd",
+    save_as = "report/chapter1.Rmd",
+    ignore = TRUE,
+    open = TRUE,
+    package = "flowme"
   )
   usethis::use_template(
-    template = "targets/report/chapter2.Rmd", save_as = "report/chapter2.Rmd",
-    ignore = TRUE, open = TRUE, package = "flowme"
+    template = "targets/report/chapter2.Rmd",
+    save_as = "report/chapter2.Rmd",
+    ignore = TRUE,
+    open = TRUE,
+    package = "flowme"
   )
 }
 
@@ -113,7 +142,7 @@ use_targets_description <- function(install_deps = TRUE) {
   desc::desc_set_dep("tarchetypes")
   desc::desc_set_dep("visNetwork")
   desc::desc_set_dep("bookdown")
-  desc::desc_set_dep("conflicted")
+  desc::desc_set_dep("usethis")
 
   if (isTRUE(install_deps)) {
     remotes::install_deps(upgrade = "never")
