@@ -28,20 +28,20 @@
 #'
 #' - This is perhaps the most controversial: We are keeping the DBI connection
 #'   in the global environment. There might be a better way and we would need to
-#'   take a closer look at {targets}'s environment management to find it. But
+#'   take a closer look at `targets`'s environment management to find it. But
 #'   for now, this is working as we intended and you just have to be aware of
 #'   this, and of course, make sure you do not create conflicts by creating in
 #'   your code variables with the same name as the one given to the connection
 #'   (conn_name)
-#' - To keep it as flexible as possible, we do not want to use {targets} storage
+#' - To keep it as flexible as possible, we do not want to use `targets` storage
 #'   for the DuckDB files. Instead, we decided to keep the files somewhere else
 #'   (duh, in the duckdb folder, or wherever you want, since you can simply pass
-#'   the full path to the target factory). In the {targets} storage we will keep
+#'   the full path to the target factory). In the `targets` storage we will keep
 #'   only some metadata to re-create the DBI connection.
 #' - So, what about the DBI connection? Well, connections are one of those
 #'   non-exportable objects that are tied to a given R session and cannot be
 #'   easily saved and simply read on another session. So that cannot be the
-#'   return value of the target. Typical workarounds for that in {targets}
+#'   return value of the target. Typical workarounds for that in `targets`
 #'   include the use of custom functions to create and close the connection
 #'   after the job is done, and the use of hooks with similar purpose.
 #'   (https://books.ropensci.org/targets/targets.html#return-value).
@@ -92,7 +92,7 @@
 #' connection and manually attach each DB you need, and then manually edit
 #' DuckDB's search path to emulate one single database (or you would have to use
 #' fully qualified names to refer to the tables, becasue ATTACH puts each file
-#' in its own catalog). And here's where {targets} can be handy, because it is
+#' in its own catalog). And here's where `targets` can be handy, because it is
 #' super smart in handling dependencies and loading them on the fly. So the idea
 #' is to leverage that power in a bunch of targets that handle the DBI
 #' connection to each duckdb file, opening it and attaching dependencies on the
