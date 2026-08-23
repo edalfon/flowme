@@ -23,7 +23,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">flowme</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.5.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.5.2</span>
       </span>
     </div>
 
@@ -69,6 +69,11 @@
       <small>Source: <a href="https://github.com/edalfon/flowme/blob/master/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
     </div>
 
+    <div class="section level2">
+<h2 class="page-header" data-toc-text="0.5.2" id="flowme-052">flowme 0.5.2<a class="anchor" aria-label="anchor" href="#flowme-052"></a></h2>
+<ul><li>fix bug introduced by removing imports.</li>
+<li>tar_duck_r() example calls targets::tar_script() directly, which writes _targets.R into the current working directory — during R CMD check that’s the check directory itself, and it was never cleaned up. It’s unrelated to the _targets.R template under inst/templates/, which is why you couldn’t find it in the repo. Fixed by wrapping the example in targets::tar_dir() — a helper targets ships specifically for this (“Not a user-side function. Just for CRAN.”) that runs code in a temp directory and cleans up after.</li>
+</ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.5.1" id="flowme-051">flowme 0.5.1<a class="anchor" aria-label="anchor" href="#flowme-051"></a></h2>
 <ul><li>add <code>tar_fn()</code> to the <code>overrides.R</code> template: a small convenience for those who like to write (part of) the pipeline as plain sequential code inside a function, instead of the usual <code><a href="https://rdrr.io/r/base/list.html" class="external-link">list()</a></code>/plan. It does not call the function; it unfolds its body and evals each statement in the caller’s environment, one by one. Pairs well with the <code>tar_target()</code> override added in 0.5.0, so running such a function interactively actually executes and assigns each target, instead of just returning its (unevaluated) definition.</li>
