@@ -177,7 +177,7 @@ tar_duck_r <- function(target_name,
                        ),
                        conn_name = "db") {
 
-  check_pkgs_installed(c("DBI", "duckdb"), "tar_duck_r")
+  check_pkgs_installed(c("DBI", "duckdb", "tictoc"), "tar_duck_r")
 
   target_name <- targets::tar_deparse_language(substitute(target_name))
 

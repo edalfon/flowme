@@ -2,6 +2,7 @@ targets::tar_test("tar_duck_rmd works", {
   testthat::skip_if_not_installed("DBI")
   testthat::skip_if_not_installed("duckdb")
   testthat::skip_if_not_installed("dplyr")
+  testthat::skip_if_not_installed("tictoc")
 
   fs::dir_create("sql")
   firms_lines <- "
