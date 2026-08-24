@@ -273,7 +273,7 @@ tar_duck_r <- function(target_name,
 duck_tar_format <- targets::tar_format(
   read = function(path) {
 
-    check_pkgs_installed(c("DBI", "duckdb"), "tar_duck_r()/tar_duck_rmd()")
+    flowme:::check_pkgs_installed(c("DBI", "duckdb"), "tar_duck_r()/tar_duck_rmd()")
 
     duckdb_target_object <- readRDS(path)
     duckdb_path <- duckdb_target_object$duckdb_path
@@ -350,7 +350,7 @@ duck_tar_format <- targets::tar_format(
     if (DBI::dbExistsTable(conn_obj, target_name)) {
       # dplyr::tbl() on a DBI connection dispatches through dbplyr, so
       # dbplyr must be installed even though we never call dbplyr:: ourselves
-      check_pkgs_installed(c("dplyr", "dbplyr"), "tar_duck_r()/tar_duck_rmd()")
+      flowme:::check_pkgs_installed(c("dplyr", "dbplyr"), "tar_duck_r()/tar_duck_rmd()")
       dplyr::tbl(conn_obj, target_name)
     } else {
       NULL
