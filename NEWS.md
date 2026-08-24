@@ -1,3 +1,12 @@
+# flowme 0.7.0
+
+* `targetsme()`/`use_targets()` gain a new `renv` argument (default `FALSE`).
+  When `TRUE`, calls `renv::init(settings = list(snapshot.type = "explicit"))`
+  as the last step, so the scaffolded project starts under `renv`, snapshotting
+  only the packages declared in its DESCRIPTION rather than scanning project
+  code for dependencies. `renv` lives in Suggests and is only required when
+  `renv = TRUE` is actually used.
+
 # flowme 0.6.1
 
 * fix `duck_tar_format()`'s read method: two of the optional-dependency
