@@ -1,3 +1,13 @@
+#' Extract everything before the first '#' in each string, NA where the
+#' string is entirely a comment (mirrors `stringr::str_extract("^[^#]+")`).
+#' @noRd
+str_before_hash <- function(x) {
+  has_match <- grepl("^[^#]", x)
+  out <- rep(NA_character_, length(x))
+  out[has_match] <- sub("#.*$", "", x[has_match])
+  out
+}
+
 #' @describeIn tar_duck_r write the sql code in a Rmd Notebook
 #' @param sql_rmd path to the Rmd file
 #' @export
@@ -44,11 +54,11 @@ tar_duck_rmd <- function(sql_rmd,
     load_targets_chunks$ast[load_targets_chunks$type == "rmd_chunk"] |>
     purrr::map(parsermd::rmd_node_code) |>
     purrr::list_c() |>
-    stringr::str_trim() |>
+    trimws() |>
     # TODO: handle here edge cases, like commented lines and others
     #      (both, whole line commented, or comment at the end of the line)
     #      here's a way to do it, but very basic perhaps
-    stringr::str_extract("^[^#]+") |> # extract everything before the first #
+    str_before_hash() |> # extract everything before the first #
     (\(x) x[x != ""])() |>
     paste0(collapse = ", ") |>
     paste0("list(", x = _, ")") # pipe placeholder can only be used with named arg

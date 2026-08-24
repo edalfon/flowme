@@ -28,7 +28,6 @@ Imports:
     visNetwork,
     parsermd,
     rlang,
-    stringr,
     tictoc,
     job
 Suggests:
