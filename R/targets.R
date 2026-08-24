@@ -143,6 +143,11 @@ use_targets_description <- function(install_deps = TRUE) {
   desc::desc_set_dep("visNetwork")
   desc::desc_set_dep("bookdown")
   desc::desc_set_dep("usethis")
+  desc::desc_set_dep("devtools")
+  desc::desc_set_dep("dplyr")
+  desc::desc_set_dep("tidyr")
+  desc::desc_set_dep("ggplot2")
+  usethis::use_dev_package("flowme", remote = "edalfon/flowme")
 
   if (isTRUE(install_deps)) {
     remotes::install_deps(upgrade = "never")
@@ -157,7 +162,9 @@ use_targets_description <- function(install_deps = TRUE) {
 tar_make_job <- function() {
   rstudioapi::documentSaveAll()
 
-  if (file.exists("pre_tar_make.R")) source("pre_tar_make.R")
+  if (file.exists("pre_tar_make.R")) {
+    source("pre_tar_make.R")
+  }
 
   job::job(
     {
