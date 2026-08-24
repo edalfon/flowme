@@ -1,3 +1,15 @@
+# flowme 0.6.1
+
+* fix `duck_tar_format()`'s read method: two of the optional-dependency
+  checks added in 0.6.0 (`DBI`/`duckdb` and `dplyr`/`dbplyr`) were called
+  unqualified. `targets::tar_format()` deparses `read`/`write` to text and
+  later reconstructs them outside `flowme`'s namespace, so the bare calls
+  failed with `could not find function "check_pkgs_installed"` once the
+  package was actually installed (masked under `devtools::load_all()`,
+  which exports internals onto the search path). Fixed by qualifying them
+  as `flowme:::check_pkgs_installed()`, matching every other reference in
+  that closure.
+
 # flowme 0.6.0
 
 Substantially lighter default install: most feature-specific or heavyweight
