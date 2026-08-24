@@ -1,5 +1,8 @@
 
 targets::tar_test("tar_duck_r works", {
+  testthat::skip_if_not_installed("DBI")
+  testthat::skip_if_not_installed("duckdb")
+  testthat::skip_if_not_installed("dplyr")
 
   targets::tar_script({
 

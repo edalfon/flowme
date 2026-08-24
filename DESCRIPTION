@@ -14,7 +14,7 @@ Encoding: UTF-8
 Language: en-US
 LazyData: true
 Roxygen: list(markdown = TRUE)
-Imports: 
+Imports:
     magrittr,
     usethis,
     fs,
@@ -26,16 +26,12 @@ Imports:
     rstudioapi,
     targets,
     visNetwork,
-    DBI,
-    dbplyr,
-    dplyr,
-    duckdb,
     parsermd,
     rlang,
     stringr,
     tictoc,
     job
-Suggests: 
+Suggests:
     testthat (>= 3.0.0),
     spelling,
     knitr,
@@ -44,7 +40,11 @@ Suggests:
     tarchetypes,
     drake,
     here,
-    covr
+    covr,
+    DBI,
+    dbplyr,
+    dplyr,
+    duckdb
 Config/testthat/edition: 3
 VignetteBuilder: knitr
 URL: https://edalfon.github.io/flowme/, https://github.com/edalfon/flowme

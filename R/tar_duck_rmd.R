@@ -9,6 +9,8 @@ tar_duck_rmd <- function(sql_rmd,
                            make.names(),
                          conn_name = "db") {
 
+  check_duckdb_pkgs(c("DBI", "duckdb"), "tar_duck_rmd")
+
   # We want to induce a dependency on the Rmd file. But we will use a custom
   # format for this target, so we cannot simply set it to format = 'file'. We
   # could create a separate tar_file just to track changes in the Rmd and keep
