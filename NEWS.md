@@ -1,3 +1,40 @@
+# flowme 0.6.0
+
+Substantially lighter default install: most feature-specific or heavyweight
+dependencies moved from Imports to Suggests, only required when the
+corresponding functionality is actually used, with an informative error
+(naming exactly what's missing, with an `install.packages()` hint) if it
+isn't installed. Imports goes from 21 packages down to 11.
+
+* **Breaking change:** drop `magrittr`. `flowme::%>%` is no longer exported
+  — flowme's own code already used the native `|>` pipe everywhere. Adds an
+  explicit `Depends: R (>= 4.1.0)` to reflect the pipe's actual requirement.
+
+* move `duckdb`, `DBI`, `dplyr`, `dbplyr` and `tictoc` to Suggests.
+  `tar_duck_r()`, `tar_duck_rmd()` and `duck_tar_format()`'s read method now
+  check upfront that the packages they need are installed, instead of
+  requiring them just to load `flowme`.
+
+* move `remotes` to Suggests. `use_targets_description()` and
+  `use_drake_description()` only need it when `install_deps = TRUE` (the
+  default), and now check for it before calling `remotes::install_deps()`.
+
+* move `rstudioapi` and `job` to Suggests. `tar_make_job()` stays
+  RStudio-only by design (it's registered as an RStudio addin and
+  hard-requires an active RStudio session via `job::job()` regardless).
+  `tar_visnetwork_custom()`, however, no longer requires RStudio at all: it
+  now only calls `rstudioapi::documentSaveAll()` when `rstudioapi` is
+  installed and RStudio is actually running, silently skipping the save
+  otherwise.
+
+* drop the `stringr` (and transitively `stringi`) dependency, replacing its
+  two call sites in `tar_duck_rmd()` with base R (`trimws()` and a small
+  helper mirroring `stringr::str_extract("^[^#]+")`).
+
+* fix: `tarchetypes` was only listed in Suggests even though
+  `tar_bookdown()` calls `tarchetypes::tar_knitr_deps()` unconditionally;
+  it's now a proper Imports dependency.
+
 # flowme 0.5.4
 
 * fix to add here as dependency
