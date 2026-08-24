@@ -14,8 +14,9 @@ Encoding: UTF-8
 Language: en-US
 LazyData: true
 Roxygen: list(markdown = TRUE)
+Depends:
+    R (>= 4.1.0)
 Imports:
-    magrittr,
     usethis,
     fs,
     desc,
