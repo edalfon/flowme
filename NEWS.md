@@ -1,3 +1,7 @@
+# flowme 0.5.3
+
+* fix dependencies in project's DESCRIPTION
+
 # flowme 0.5.2
 
 * fix bug introduced by removing imports.
