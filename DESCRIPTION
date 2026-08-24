@@ -26,8 +26,7 @@ Imports:
     visNetwork,
     parsermd,
     rlang,
-    tictoc,
-    job
+    tictoc
 Suggests:
     testthat (>= 3.0.0),
     spelling,
@@ -40,6 +39,7 @@ Suggests:
     covr,
     remotes,
     rstudioapi,
+    job,
     DBI,
     dbplyr,
     dplyr,
