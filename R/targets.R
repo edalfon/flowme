@@ -151,6 +151,7 @@ use_targets_description <- function(install_deps = TRUE) {
   usethis::use_dev_package("flowme", remote = "edalfon/flowme")
 
   if (isTRUE(install_deps)) {
+    check_pkgs_installed("remotes", "use_targets_description")
     remotes::install_deps(upgrade = "never")
   }
 }

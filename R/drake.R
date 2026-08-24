@@ -41,6 +41,7 @@ use_drake_description <- function(install_deps = TRUE) {
   desc::desc_set_dep("bookdown")
 
   if (isTRUE(install_deps)) {
+    check_pkgs_installed("remotes", "use_drake_description")
     remotes::install_deps(upgrade = "never")
   }
 }

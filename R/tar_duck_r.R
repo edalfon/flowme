@@ -1,22 +1,3 @@
-#' Check that the given packages are installed, stopping with an informative
-#' message (and install hint) naming exactly the missing ones.
-#' @noRd
-check_duckdb_pkgs <- function(pkgs, fn_name) {
-  installed <- vapply(pkgs, requireNamespace, logical(1), quietly = TRUE)
-  missing <- pkgs[!installed]
-  if (length(missing) > 0) {
-    stop(
-      "Package(s) ", paste(missing, collapse = ", "),
-      " required for ", fn_name, "(). Install with:\n",
-      "  install.packages(c(",
-      paste0('"', missing, '"', collapse = ", "),
-      "))",
-      call. = FALSE
-    )
-  }
-  invisible(TRUE)
-}
-
 #' Target factory to run SQL code on a DuckDB database backend, keeping one
 #' DuckDB file per target
 #'
@@ -196,7 +177,7 @@ tar_duck_r <- function(target_name,
                        ),
                        conn_name = "db") {
 
-  check_duckdb_pkgs(c("DBI", "duckdb"), "tar_duck_r")
+  check_pkgs_installed(c("DBI", "duckdb"), "tar_duck_r")
 
   target_name <- targets::tar_deparse_language(substitute(target_name))
 
@@ -292,7 +273,7 @@ tar_duck_r <- function(target_name,
 duck_tar_format <- targets::tar_format(
   read = function(path) {
 
-    check_duckdb_pkgs(c("DBI", "duckdb"), "tar_duck_r()/tar_duck_rmd()")
+    check_pkgs_installed(c("DBI", "duckdb"), "tar_duck_r()/tar_duck_rmd()")
 
     duckdb_target_object <- readRDS(path)
     duckdb_path <- duckdb_target_object$duckdb_path
@@ -369,7 +350,7 @@ duck_tar_format <- targets::tar_format(
     if (DBI::dbExistsTable(conn_obj, target_name)) {
       # dplyr::tbl() on a DBI connection dispatches through dbplyr, so
       # dbplyr must be installed even though we never call dbplyr:: ourselves
-      check_duckdb_pkgs(c("dplyr", "dbplyr"), "tar_duck_r()/tar_duck_rmd()")
+      check_pkgs_installed(c("dplyr", "dbplyr"), "tar_duck_r()/tar_duck_rmd()")
       dplyr::tbl(conn_obj, target_name)
     } else {
       NULL
