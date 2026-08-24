@@ -147,6 +147,7 @@ use_targets_description <- function(install_deps = TRUE) {
   desc::desc_set_dep("dplyr")
   desc::desc_set_dep("tidyr")
   desc::desc_set_dep("ggplot2")
+  desc::desc_set_dep("here")
   usethis::use_dev_package("flowme", remote = "edalfon/flowme")
 
   if (isTRUE(install_deps)) {

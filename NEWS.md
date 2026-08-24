@@ -1,3 +1,7 @@
+# flowme 0.5.4
+
+* fix to add here as dependency
+
 # flowme 0.5.3
 
 * fix dependencies in project's DESCRIPTION
