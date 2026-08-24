@@ -23,7 +23,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">flowme</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.5.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.6.0</span>
       </span>
     </div>
 
@@ -69,6 +69,16 @@
       <small>Source: <a href="https://github.com/edalfon/flowme/blob/master/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
     </div>
 
+    <div class="section level2">
+<h2 class="page-header" data-toc-text="0.6.0" id="flowme-060">flowme 0.6.0<a class="anchor" aria-label="anchor" href="#flowme-060"></a></h2>
+<p>Substantially lighter default install: most feature-specific or heavyweight dependencies moved from Imports to Suggests, only required when the corresponding functionality is actually used, with an informative error (naming exactly what’s missing, with an <code><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages()</a></code> hint) if it isn’t installed. Imports goes from 21 packages down to 11.</p>
+<ul><li><p><strong>Breaking change:</strong> drop <code>magrittr</code>. <code>flowme::%&gt;%</code> is no longer exported — flowme’s own code already used the native <code>|&gt;</code> pipe everywhere. Adds an explicit <code>Depends: R (&gt;= 4.1.0)</code> to reflect the pipe’s actual requirement.</p></li>
+<li><p>move <code>duckdb</code>, <code>DBI</code>, <code>dplyr</code>, <code>dbplyr</code> and <code>tictoc</code> to Suggests. <code><a href="../reference/tar_duck_r.html">tar_duck_r()</a></code>, <code><a href="../reference/tar_duck_r.html">tar_duck_rmd()</a></code> and <code><a href="../reference/duck_tar_format.html">duck_tar_format()</a></code>’s read method now check upfront that the packages they need are installed, instead of requiring them just to load <code>flowme</code>.</p></li>
+<li><p>move <code>remotes</code> to Suggests. <code><a href="../reference/use_targets_description.html">use_targets_description()</a></code> and <code><a href="../reference/use_drake_description.html">use_drake_description()</a></code> only need it when <code>install_deps = TRUE</code> (the default), and now check for it before calling <code><a href="https://remotes.r-lib.org/reference/install_deps.html" class="external-link">remotes::install_deps()</a></code>.</p></li>
+<li><p>move <code>rstudioapi</code> and <code>job</code> to Suggests. <code><a href="../reference/tar_make_job.html">tar_make_job()</a></code> stays RStudio-only by design (it’s registered as an RStudio addin and hard-requires an active RStudio session via <code><a href="https://lindeloev.github.io/job/reference/job.html" class="external-link">job::job()</a></code> regardless). <code><a href="../reference/tar_visnetwork_custom.html">tar_visnetwork_custom()</a></code>, however, no longer requires RStudio at all: it now only calls <code><a href="https://rstudio.github.io/rstudioapi/reference/rstudio-documents.html" class="external-link">rstudioapi::documentSaveAll()</a></code> when <code>rstudioapi</code> is installed and RStudio is actually running, silently skipping the save otherwise.</p></li>
+<li><p>drop the <code>stringr</code> (and transitively <code>stringi</code>) dependency, replacing its two call sites in <code><a href="../reference/tar_duck_r.html">tar_duck_rmd()</a></code> with base R (<code><a href="https://rdrr.io/r/base/trimws.html" class="external-link">trimws()</a></code> and a small helper mirroring <code>stringr::str_extract("^[^#]+")</code>).</p></li>
+<li><p>fix: <code>tarchetypes</code> was only listed in Suggests even though <code><a href="../reference/tar_bookdown.html">tar_bookdown()</a></code> calls <code><a href="https://docs.ropensci.org/tarchetypes/reference/tar_knitr_deps.html" class="external-link">tarchetypes::tar_knitr_deps()</a></code> unconditionally; it’s now a proper Imports dependency.</p></li>
+</ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.5.4" id="flowme-054">flowme 0.5.4<a class="anchor" aria-label="anchor" href="#flowme-054"></a></h2>
 <ul><li>fix to add here as dependency</li>
