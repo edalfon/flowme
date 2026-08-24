@@ -183,7 +183,9 @@ tar_make_job <- function() {
 #' @export
 #' @md
 tar_visnetwork_custom <- function() {
-  rstudioapi::documentSaveAll()
+  if (requireNamespace("rstudioapi", quietly = TRUE) && rstudioapi::isAvailable()) {
+    rstudioapi::documentSaveAll()
+  }
 
   # targets::tar_visnetwork() renders a visNetwork htmlwidget, so visNetwork
   # must be installed even though we never call visNetwork:: ourselves
