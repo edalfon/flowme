@@ -23,7 +23,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">flowme</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.6.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.7.0</span>
       </span>
     </div>
 
@@ -69,6 +69,11 @@
       <small>Source: <a href="https://github.com/edalfon/flowme/blob/master/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
     </div>
 
+    <div class="section level2">
+<h2 class="page-header" data-toc-text="0.7.0" id="flowme-070">flowme 0.7.0<a class="anchor" aria-label="anchor" href="#flowme-070"></a></h2>
+<ul><li>
+<code><a href="../reference/targetsme.html">targetsme()</a></code>/<code><a href="../reference/targetsme.html">use_targets()</a></code> gain a new <code>renv</code> argument (default <code>FALSE</code>). When <code>TRUE</code>, calls <code>renv::init(settings = list(snapshot.type = "explicit"))</code> as the last step, so the scaffolded project starts under <code>renv</code>, snapshotting only the packages declared in its DESCRIPTION rather than scanning project code for dependencies. <code>renv</code> lives in Suggests and is only required when <code>renv = TRUE</code> is actually used.</li>
+</ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.6.1" id="flowme-061">flowme 0.6.1<a class="anchor" aria-label="anchor" href="#flowme-061"></a></h2>
 <ul><li>fix <code><a href="../reference/duck_tar_format.html">duck_tar_format()</a></code>’s read method: two of the optional-dependency checks added in 0.6.0 (<code>DBI</code>/<code>duckdb</code> and <code>dplyr</code>/<code>dbplyr</code>) were called unqualified. <code><a href="https://docs.ropensci.org/targets/reference/tar_format.html" class="external-link">targets::tar_format()</a></code> deparses <code>read</code>/<code>write</code> to text and later reconstructs them outside <code>flowme</code>’s namespace, so the bare calls failed with <code>could not find function "check_pkgs_installed"</code> once the package was actually installed (masked under <code>devtools::load_all()</code>, which exports internals onto the search path). Fixed by qualifying them as <code>flowme:::check_pkgs_installed()</code>, matching every other reference in that closure.</li>
