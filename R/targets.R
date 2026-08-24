@@ -3,17 +3,27 @@
 #' Add boilerplate code to the current project for a targets-based project
 #' - Copy templates to the current project.
 #' - Include entries in .gitignore to prevent some files into version control
+#' - Optionally initialize `renv` for the project (see `renv` argument)
 #'
 #' @inheritParams use_targets_description
+#' @param renv logical, whether to initialize `renv` for the project (via
+#' `renv::init()`), using explicit snapshots (i.e. only packages listed as
+#' dependencies in the DESCRIPTION file are snapshotted, as opposed to
+#' `renv`'s default of scanning the project's code for used packages)
 #'
 #' @export
 #' @md
-targetsme <- function(install_deps = TRUE) {
+targetsme <- function(install_deps = TRUE, renv = FALSE) {
   usethis::proj_set(".", force = TRUE)
 
   use_targets_templates()
   use_targets_description(install_deps)
   use_targets_gitignore()
+
+  if (isTRUE(renv)) {
+    check_pkgs_installed("renv", "targetsme")
+    renv::init(settings = list(snapshot.type = "explicit"))
+  }
 }
 
 #' @rdname targetsme

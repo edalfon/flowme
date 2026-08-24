@@ -5,17 +5,23 @@
 \alias{use_targets}
 \title{Add files and directories for a targets-powered project.}
 \usage{
-targetsme(install_deps = TRUE)
+targetsme(install_deps = TRUE, renv = FALSE)
 
-use_targets(install_deps = TRUE)
+use_targets(install_deps = TRUE, renv = FALSE)
 }
 \arguments{
 \item{install_deps}{logical, whether to install dependencies}
+
+\item{renv}{logical, whether to initialize \code{renv} for the project (via
+\code{renv::init()}), using explicit snapshots (i.e. only packages listed as
+dependencies in the DESCRIPTION file are snapshotted, as opposed to
+\code{renv}'s default of scanning the project's code for used packages)}
 }
 \description{
 Add boilerplate code to the current project for a targets-based project
 \itemize{
 \item Copy templates to the current project.
 \item Include entries in .gitignore to prevent some files into version control
+\item Optionally initialize \code{renv} for the project (see \code{renv} argument)
 }
 }
